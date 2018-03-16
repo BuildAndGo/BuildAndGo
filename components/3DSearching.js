@@ -103,6 +103,7 @@ export default class Searching extends Component {
   _getVRNavigator() {
     return (
       <ViroSceneNavigator {...this.state.sharedProps}
+        debug={true}
         initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
     );
   }

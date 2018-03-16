@@ -4,18 +4,16 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  KeyboardAvoidingView
+  StyleSheet
 } from "react-native";
-import {  FormLabel, FormInput } from "react-native-elements";
 import { StackNavigator } from "react-navigation";
 
 export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleChangePassword = this.handleChangePassword.bind(this)
@@ -31,18 +29,18 @@ export default class Login extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior="position" style={{ paddingVertical: 20 }}>
+      <View style={styles.container}>
         <Text style={styles.title}>Build And Go!</Text>
-        <FormLabel>Email: </FormLabel>
-        <FormInput
-          placeholder="email"
+        <Text>Email: </Text>
+        <TextInput
+          placeholder="type your email"
           onChangeText={(email) => this.handleChangeEmail(email)}
           value={this.state.password}
         />
 
-        <FormLabel>Password: </FormLabel>
-        <FormInput
-          placeholder="password"
+        <Text>Password: </Text>
+        <TextInput
+          placeholder="type your password"
           onChangeText={(password) => this.handleChangePassword(password)}
           value={this.state.email}
         />
@@ -60,7 +58,7 @@ export default class Login extends Component {
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
-      </KeyboardAvoidingView>
+      </View>
     );
   }
 }
