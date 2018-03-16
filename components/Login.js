@@ -34,15 +34,13 @@ export default class Login extends Component {
         <Text>Email: </Text>
         <TextInput
           placeholder="type your email"
-          onChangeText={(email) => this.handleChangeEmail(email)}
-          value={this.state.password}
+          onChangeText={this.handleChangeEmail}
         />
 
         <Text>Password: </Text>
         <TextInput
           placeholder="type your password"
-          onChangeText={(password) => this.handleChangePassword(password)}
-          value={this.state.email}
+          onChangeText={this.handleChangePassword}
         />
 
         <TouchableOpacity
