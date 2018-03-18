@@ -31,10 +31,8 @@ var sharedProps = {
 
 // Sets the default scene you want for AR and VR
 var InitialARScene = require('../js/HelloWorldSceneAR');
-var InitialVRScene = require('../js/HelloWorldScene');
 
 var UNSET = "UNSET";
-var VR_NAVIGATOR_TYPE = "VR";
 var AR_NAVIGATOR_TYPE = "AR";
 
 // This determines which type of experience to launch in, or UNSET, if the user should
@@ -46,12 +44,11 @@ export default class Searching extends Component {
     super();
 
     this.state = {
-      navigatorType : defaultNavigatorType,
-      sharedProps : sharedProps
+      navigatorType: defaultNavigatorType,
+      sharedProps: sharedProps
     }
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getVRNavigator = this._getVRNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
@@ -61,8 +58,6 @@ export default class Searching extends Component {
   render() {
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
-    } else if (this.state.navigatorType == VR_NAVIGATOR_TYPE) {
-      return this._getVRNavigator();
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
@@ -96,15 +91,6 @@ export default class Searching extends Component {
     return (
       <ViroARSceneNavigator {...this.state.sharedProps}
         initialScene={{scene: InitialARScene}} />
-    );
-  }
-
-  // Returns the ViroSceneNavigator which will start the VR experience
-  _getVRNavigator() {
-    return (
-      <ViroSceneNavigator {...this.state.sharedProps}
-        debug={true}
-        initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
     );
   }
 
@@ -184,32 +170,4 @@ var localStyles = StyleSheet.create({
 module.exports = Searching
 
 
-// import React from "react";
-// import { View, Text, TouchableOpacity } from "react-native";
-// import { StackNavigator } from "react-navigation";
-// import styles from './styles'
-
-// export default class Searching extends React.Component {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text>This is 3D Searcing Page</Text>
-
-//         <TouchableOpacity
-//           style={styles.button}
-//           onPress={() => this.props.navigation.navigate("Winner")}
-//         >
-//           <Text>Go to Winner</Text>
-//         </TouchableOpacity>
-
-//         <TouchableOpacity
-//           style={styles.button2}
-//           onPress={() => this.props.navigation.navigate("Loser")}
-//         >
-//           <Text>Go to Loser</Text>
-//         </TouchableOpacity>
-//       </View>
-//     );
-//   }
-// }
 
