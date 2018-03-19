@@ -22,6 +22,7 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
+
 /*
  TODO: Insert your API key below
  */
@@ -30,7 +31,7 @@ var sharedProps = {
 }
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('../js/HelloWorldSceneAR');
+var InitialARScene = require('./GeoLocation');
 
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
