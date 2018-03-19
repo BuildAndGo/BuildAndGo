@@ -30,13 +30,13 @@ export default class ARrender extends Component {
   }
 
   _onClick() {
-    // var array = this.state.parts;
-    // array.splice(0, 1);
-    // this.setState({parts: array })
+    var array = this.state.parts;
+    array.splice(0, 1);
+    this.setState({parts: array })
     // this.props.sceneNavigator.jump('Inventory', {
     //   scene: require('./Inventory')
     // })
-    this.props.sceneNavigator.push({scene:require('./Inventory')});
+    //this.props.sceneNavigator.push({scene:require('./Inventory')});
 
   }
 
