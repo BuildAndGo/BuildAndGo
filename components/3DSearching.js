@@ -89,8 +89,10 @@ export default class Searching extends Component {
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
+
       <ViroARSceneNavigator {...this.state.sharedProps}
         initialScene={{scene: InitialARScene}} />
+
     );
   }
 
