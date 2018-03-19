@@ -10,6 +10,7 @@ import Racing from './2DRacing'
 import Searching from './3DSearching'
 import Winner from './Winner'
 import Loser from './Loser'
+import ARrender from './ARrender'
 
 export const RootStack = StackNavigator({
  Login : {
@@ -32,5 +33,8 @@ export const RootStack = StackNavigator({
  },
  Loser: {
    screen: Loser
+ },
+ ARrender: {
+   screen: ARrender
  }
 })

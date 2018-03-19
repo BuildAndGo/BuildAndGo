@@ -31,7 +31,7 @@ var sharedProps = {
 }
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('./GeoLocation');
+var InitialARScene = require('./ARrender');
 
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
@@ -90,8 +90,10 @@ export default class Searching extends Component {
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
+
       <ViroARSceneNavigator {...this.state.sharedProps}
         initialScene={{scene: InitialARScene}} />
+
     );
   }
 
