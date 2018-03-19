@@ -11,9 +11,10 @@ import Searching from './3DSearching'
 import Winner from './Winner'
 import Loser from './Loser'
 import ARrender from './ARrender'
+import PartsNearby from './PartsNearby'
 
 export const RootStack = StackNavigator({
- Login : {
+ Login: {
    screen: Login
  },
  Signup: {
@@ -36,5 +37,8 @@ export const RootStack = StackNavigator({
  },
  ARrender: {
    screen: ARrender
+ },
+ PartsNearby: {
+  screen: PartsNearby
  }
 })

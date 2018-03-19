@@ -56,6 +56,14 @@ export default class Login extends Component {
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button3}
+          onPress={() => this.props.navigation.navigate("PartsNearby")}
+        >
+          <Text>Location</Text>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -81,6 +89,14 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     padding: 10,
     top: 500,
+    position: "absolute"
+  },
+  button3: {
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    opacity: 0.5,
+    padding: 10,
+    top: 550,
     position: "absolute"
   },
   tagLine: {
