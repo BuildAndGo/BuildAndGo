@@ -16,6 +16,8 @@ import {
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
+import { StackNavigator } from "react-navigation";
+
 
 import {
   ViroSceneNavigator,
@@ -45,7 +47,8 @@ export default class Searching extends Component {
 
     this.state = {
       navigatorType: defaultNavigatorType,
-      sharedProps: sharedProps
+      sharedProps: sharedProps,
+
     }
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);

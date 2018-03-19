@@ -11,10 +11,11 @@ import Searching from './3DSearching'
 import Winner from './Winner'
 import Loser from './Loser'
 import ARrender from './ARrender'
+import Inventory from './Inventory';
 
 export const RootStack = StackNavigator({
  Login : {
-   screen: Login
+   screen: Searching
  },
  Signup: {
    screen: Signup
@@ -36,5 +37,8 @@ export const RootStack = StackNavigator({
  },
  ARrender: {
    screen: ARrender
+ },
+ Inventory: {
+   screen: Inventory
  }
 })

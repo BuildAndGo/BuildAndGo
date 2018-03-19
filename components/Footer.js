@@ -3,16 +3,11 @@ import { View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
 export default Footer = () => {
   return (
-    <View style={styles.container}>
+    <View>
 
     <TouchableOpacity>
       <Text>hi</Text>
     </TouchableOpacity>
-
-    <TouchableOpacity>
-      <Text>hi2</Text>
-    </TouchableOpacity>
-
 
     </View>
   )

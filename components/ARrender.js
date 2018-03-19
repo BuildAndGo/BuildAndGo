@@ -6,60 +6,79 @@ import { StackNavigator } from "react-navigation";
 
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
 
-var Inventory = require('./Inventory');
+import Inventory from './Inventory'
 import Footer from './Footer'
 
+var carbody = require("../assets/tire.png")
+var red = require("../assets/red.png")
+var tire = require('../assets/carbody.png')
 export default class ARrender extends Component {
   constructor() {
     super();
 
     // Set initial state here
     this.state = {
-      text: "Initializing AR...",
-      buttonStateTag: ""
+      inventory: [],
+      parts: []
     };
 
     // bind 'this' to functions
-    this._onButtonTap = this._onButtonTap.bind(this);
-    this._onDrag = this._onDrag.bind(this);
+    this._onClick = this._onClick.bind(this);
   }
-  _onButtonTap() {
-    return(
-      <ViroSceneNavigator
-      initialScene={{scene: Inventory}} />
-    )
-    //this.props.sceneNavigator.jump("scene2", {scene:Inventory});
+  componentDidMount(){
+    this.setState({ parts: [carbody, red, tire], inventory: [] })
   }
 
-  _onDrag(dragToPos, source)  {
-    console.log("Dragged to: x" + draggedToPosition[0] + " y:" + draggedToPosition[1] + " z: " + draggedToPosition[2])
-}
+  _onClick() {
+    // var array = this.state.parts;
+    // array.splice(0, 1);
+    // this.setState({parts: array })
+    // this.props.sceneNavigator.jump('Inventory', {
+    //   scene: require('./Inventory')
+    // })
+    this.props.sceneNavigator.push({scene:require('./Inventory')});
+
+  }
+
 
   render() {
-    var buttonSize = 0.25;
     return (
 
-        <ViroARScene>
 
-          {/* <Viro3DObject
-            source={require("../assets/tire.obj")}
-            resources={[require("../assets/tire.mtl")]}
-            position={[0.0, 0.0, -10]}
-            scale={[0.1, 0.1, 0.1]}
-            type="OBJ"
-          /> */}
+      // this.props.navigation.navigation.navigate('Inventory')
 
-          <ViroButton
-            source={require('../assets/tire.png')}
-            position={[1, 3, -5]}
-            height={2}
-            width={3}
-            onClick={this._onButtonTap}
-            //onDrag={this._onDrag}
-          />
+      //  :
+       <ViroARScene>
 
+       {/* <Viro3DObject
+         source={require("../assets/tire.obj")}
+         resources={[require("../assets/tire.mtl")]}
+         position={[0.0, 0.0, -10]}
+         scale={[0.1, 0.1, 0.1]}
+         type="OBJ"
+       /> */}
 
-          </ViroARScene>
+       {
+         this.state.parts && this.state.parts.map( (part, i) => {
+           var x = Math.floor(Math.random() * 2);
+           var y = Math.floor(Math.random() * 5)
+           var z = Math.floor(Math.random() * -8)
+           return (
+             <ViroButton
+             key={i}
+             source={part}
+             position={[x,y,z]}
+             height={2}
+             width={3}
+             onClick={this._onClick}
+             onDrag={()=>{}}
+           />
+           )
+         })
+       }
+
+       </ViroARScene>
+
 
 
 
