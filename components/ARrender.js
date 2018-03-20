@@ -23,6 +23,7 @@ export default class ARrender extends Component {
     this._onButtonTap = this._onButtonTap.bind(this);
     this._onDrag = this._onDrag.bind(this);
   }
+
   _onButtonTap() {
     return(
       <ViroSceneNavigator

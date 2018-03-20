@@ -22,7 +22,7 @@ export default class PartsNearby extends React.Component {
         latitude: 40.7050760,
         longitude: -74.0091600
       },
-      carParts: []
+      randomLoc: []
     }
 
     this.renderCarParts = throttle(this.renderCarParts.bind(this), THROTTLE)
