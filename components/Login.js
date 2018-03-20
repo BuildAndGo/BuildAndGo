@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import { StackNavigator } from "react-navigation";
+import { StackNavigator } from 'react-navigation';
+
 
 export default class Login extends Component {
   constructor() {
@@ -25,6 +26,10 @@ export default class Login extends Component {
 
   handleChangePassword(value) {
     this.setState({ password: value})
+  }
+
+  componentDidMount() {
+
   }
 
   render() {
@@ -117,3 +122,6 @@ const styles = StyleSheet.create({
     top: 100
   }
 });
+
+
+

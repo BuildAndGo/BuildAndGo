@@ -13,7 +13,11 @@ export default class UserLocation extends Component {
     };
   }
 
+<<<<<<< HEAD
 async componentDidMount() {
+=======
+ componentDidMount() {
+>>>>>>> 60f835d02b22ba073bc1d6cef59f3db0121bc35a
   const success = (position) => {
     this.setState({
       latitude: position.coords.latitude,
@@ -23,8 +27,7 @@ async componentDidMount() {
   }
   const error = (err) => this.setState({ err: err.message })
   const options = { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-
-  await navigator.geolocation.getCurrentPosition(success, error, options)
+ navigator.geolocation.getCurrentPosition(success, error, options)
     }
     // else {
     //   this.setState({

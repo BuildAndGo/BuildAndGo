@@ -3,8 +3,13 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
+import { connect } from 'react-redux'
 
-export default class Profile extends React.Component {
+
+class Profile extends React.Component {
+
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -29,3 +34,13 @@ export default class Profile extends React.Component {
     );
   }
 }
+
+
+
+export const mapState = (state) => {
+  return {
+    types: state.allTypes
+  }
+}
+
+export default connect(mapState)(Inventory)
