@@ -52,31 +52,15 @@ export default class PartsNearby extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <MapView
-          style={styles.map}
-          onRegionChange={this.onMechanicMoved}
-          showsUserLocation
-          followsUserLocation
-          scrollEnabled={false}
-          showsTraffic={false}
-          showsIndoors={false}
-          showsPointsOfInterest={false}
-        >
-          <MapView.Marker
-            key={'mechanic'}
-            image={require('../img/mechanic.png')}
-            coordinate={this.state.mechanic}
-          />
+        <Text style={styles.title}>Nearby Parts</Text>
+        <Text>
+        {
+          this.state.carParts.map(part => {
+            return (
 
-          {this.state.carParts.map(parts =>
-            <MapView.Marker
-              key={`${parts.latitude}::${parts.longitude}`}
-              coordinate={parts}
-            >
-              <Image source={parts.image} />
-            </MapView.Marker>
-          )}
-        </MapView>
+            )
+          })
+        }</Text>
 
         <View style={styles.bubble}>
           <Text style={{ textAlign: 'center'}}>
@@ -111,4 +95,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 20,
   },
+  title: {
+    fontSize: 30,
+    position: "absolute",
+    top: 100
+  }
 })
