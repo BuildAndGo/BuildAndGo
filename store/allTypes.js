@@ -13,8 +13,7 @@ export default (allTypes = [], action) => {
     case GET_ALL_TYPES:
       return action.allTypes
     default:
-      return ['this is the default', 1, 2, 3]
-      //return allTypes
+      return allTypes
   }
 }
 
@@ -24,5 +23,4 @@ export const fetchTypes = () => dispatch => {
   .then(res => res.data)
   .then(types => dispatch(getAllTypes(types)))
   .catch(err => console.error('error fetching types', err))
-  //return dispatch(getAllTypes([1, 2, 3, 4]))
 }
