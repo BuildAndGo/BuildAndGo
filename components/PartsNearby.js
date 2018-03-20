@@ -3,7 +3,6 @@ import { creatCarParts } from '../utils/randomCarPart'
 
 import {
   StyleSheet,
-  PropTypes,
   View,
   Text,
   Image

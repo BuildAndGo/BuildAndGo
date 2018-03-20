@@ -5,23 +5,24 @@ const serverUrl = "https://build-and-go.herokuapp.com";
 const GET_ALL_TYPES = 'GET_ALL_TYPES';
 
 //Action Creators
-const getAllTypes = types => ({ type: GET_ALL_TYPES, types });
+const getAllTypes = allTypes => ({ type: GET_ALL_TYPES, allTypes });
 
 //Reducer
-export default (types = [], action) => {
+export default (allTypes = [], action) => {
   switch (action.type) {
     case GET_ALL_TYPES:
-      return action.types
+      return action.allTypes
     default:
-      return types
+      return ['this is the default', 1, 2, 3]
+      //return allTypes
   }
 }
 
 //Thunks
 export const fetchTypes = () => dispatch => {
-  // axios.get(`${serverUrl}/api/types`)
-  // .then(res => res.data)
-  // .then(types => dispatch(getAllTypes(types)))
-  // .catch(err => console.error('error fetching types', err))
-  dispatch(getAllTypes([1, 2, 3, 4]))
+  axios.get(`${serverUrl}/api/types`)
+  .then(res => res.data)
+  .then(types => dispatch(getAllTypes(types)))
+  .catch(err => console.error('error fetching types', err))
+  //return dispatch(getAllTypes([1, 2, 3, 4]))
 }
