@@ -15,7 +15,7 @@ import Inventory from './Inventory';
 
 export const RootStack = StackNavigator({
  Login : {
-   screen: Searching
+   screen: Login
  },
  Signup: {
    screen: Signup

@@ -1,7 +1,7 @@
 "use strict";
 
 import React, { Component } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
@@ -31,8 +31,9 @@ export default class ARrender extends Component {
 
   _onClick() {
     var array = this.state.parts;
-    array.splice(0, 1);
-    this.setState({parts: array })
+    var out = array.splice(0, 1);
+    this.setState({parts: array, inventory: [...this.state.inventory, out] })
+
     // this.props.sceneNavigator.jump('Inventory', {
     //   scene: require('./Inventory')
     // })
@@ -42,6 +43,7 @@ export default class ARrender extends Component {
 
 
   render() {
+
     return (
 
 
@@ -57,6 +59,19 @@ export default class ARrender extends Component {
          scale={[0.1, 0.1, 0.1]}
          type="OBJ"
        /> */}
+
+       {
+         this.state.inventory.length === 3 &&
+         Alert.alert(
+          'You collected all the parts for your car!',
+          'See your Inventory',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'Inventory', onPress: () => console.warn(this.props)},
+          ],
+          { cancelable: false }
+        )
+       }
 
        {
          this.state.parts && this.state.parts.map( (part, i) => {

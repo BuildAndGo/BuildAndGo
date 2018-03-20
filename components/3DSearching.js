@@ -48,7 +48,6 @@ export default class Searching extends Component {
     this.state = {
       navigatorType: defaultNavigatorType,
       sharedProps: sharedProps,
-
     }
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -68,6 +67,7 @@ export default class Searching extends Component {
 
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
+
     return (
       <View style={localStyles.outer} >
         <View style={localStyles.inner} >
@@ -94,7 +94,7 @@ export default class Searching extends Component {
     return (
 
       <ViroARSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialARScene}} />
+        initialScene={{scene: InitialARScene}} passProps={this.props.navigation}/>
 
     );
   }
