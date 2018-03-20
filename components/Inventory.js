@@ -1,14 +1,25 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles'
+import { connect } from 'react-redux'
+import { fetchTypes } from '../store'
 
-export default class Inventory extends React.Component {
+
+class Inventory extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  // }
+
+ componentDidMount() {
+    this.props.fetchTypes()
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Inventory</Text>
-        <Text>Item1</Text>
+        {this.props.types && this.props.types.length ? <Image source={{uri: this.props.types[0].image}} style={{width: 200, height: 200}} /> : <Text>Cats</Text>}
         <Text>Item2</Text>
         <Text>Item3</Text>
         <Text>Item4</Text>
@@ -18,4 +29,12 @@ export default class Inventory extends React.Component {
   }
 }
 
-module.exports = Inventory
+ const mapState  = (state) => {
+  return {
+    types: state.allTypes
+  }
+}
+
+export const mapDispatch = { fetchTypes }
+
+export default connect(mapState, mapDispatch)(Inventory)

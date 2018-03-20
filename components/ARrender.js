@@ -67,7 +67,7 @@ export default class ARrender extends Component {
           'See your Inventory',
           [
             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'Inventory', onPress: () => console.warn(this.props)},
+            {text: 'Inventory', onPress: () => console.log('hi')},
           ],
           { cancelable: false }
         )
