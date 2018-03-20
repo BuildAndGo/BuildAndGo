@@ -4,16 +4,11 @@ import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
 import { connect } from 'react-redux'
-import { fetchTypes } from '../store/index'
+
 
 class Profile extends React.Component {
-    constructor(props) {
-      super(props)
-    }
 
-  componentDidMount() {
-    this.props.fetchTypes()
-  }
+
 
   render() {
     return (
@@ -40,7 +35,12 @@ class Profile extends React.Component {
   }
 }
 
-export const mapState = null
-export const mapDispatch = { fetchTypes }
 
-export default connect(mapState, mapDispatch)(Inventory)
+
+export const mapState = (state) => {
+  return {
+    types: state.allTypes
+  }
+}
+
+export default connect(mapState)(Inventory)
