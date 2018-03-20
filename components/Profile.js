@@ -3,8 +3,18 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
+import { connect } from 'react-redux'
+import { fetchTypes } from '../store/index'
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
+    constructor(props) {
+      super(props)
+    }
+
+  componentDidMount() {
+    this.props.fetchTypes()
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -29,3 +39,8 @@ export default class Profile extends React.Component {
     );
   }
 }
+
+export const mapState = null
+export const mapDispatch = { fetchTypes }
+
+export default connect(mapState, mapDispatch)(Inventory)

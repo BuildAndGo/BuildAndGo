@@ -1,12 +1,16 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { RootStack } from './components/router'
+import { RootStack } from './components/router';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default class App extends React.Component {
   render() {
     return (
-      <RootStack />
+      <Provider store={store}>
+        <RootStack />
+      </Provider>
     )
   }
 }

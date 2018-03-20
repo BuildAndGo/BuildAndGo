@@ -2,13 +2,20 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles'
+import { connect } from 'react-redux'
 
-export default class Inventory extends React.Component {
+
+class Inventory extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
+    console.log('hi', this.props)
     return (
       <View style={styles.container}>
         <Text>Inventory</Text>
-        <Text>Item1</Text>
+        {this.props.types.length ? <Text>{this.props.types[0]}</Text> : null}
         <Text>Item2</Text>
         <Text>Item3</Text>
         <Text>Item4</Text>
@@ -17,3 +24,13 @@ export default class Inventory extends React.Component {
     );
   }
 }
+
+ const mapState  = (state) => {
+  return {
+    types: state.types
+  }
+}
+
+ const mapDispatch = null;
+
+export default connect(mapState, mapDispatch)(Inventory)

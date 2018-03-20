@@ -1,3 +1,4 @@
+import axios from 'axios';
 const serverUrl = "https://build-and-go.herokuapp.com";
 
 //Action Types
@@ -17,9 +18,10 @@ export default (types = [], action) => {
 }
 
 //Thunks
-export const fetchTypes = () => {
-  fetch(`${serverUrl}/api/types`)
-  .then(res => res.json())
-  .then(types => dispatch(getAllTypes(types)))
-  .catch(err => console.error('error fetching types', err))
+export const fetchTypes = () => dispatch => {
+  // axios.get(`${serverUrl}/api/types`)
+  // .then(res => res.data)
+  // .then(types => dispatch(getAllTypes(types)))
+  // .catch(err => console.error('error fetching types', err))
+  dispatch(getAllTypes([1, 2, 3, 4]))
 }
