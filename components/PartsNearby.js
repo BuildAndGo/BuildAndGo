@@ -8,7 +8,7 @@ import {
   Image
 } from 'react-native'
 import MapView from 'react-native-maps'
-import { throttle } from 'lodash'
+
 
 
 const THROTTLE = 3000
@@ -25,7 +25,6 @@ export default class PartsNearby extends React.Component {
       carParts: []
     }
 
-    this.renderCarParts = throttle(this.renderCarParts.bind(this), THROTTLE)
     this.onMechanicMoved = this.onMechanicMoved.bind(this)
   }
 
@@ -52,15 +51,6 @@ export default class PartsNearby extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Nearby Parts</Text>
-        <Text>
-        {
-          this.state.carParts.map(part => {
-            return (
-
-            )
-          })
-        }</Text>
-
         <View style={styles.bubble}>
           <Text style={{ textAlign: 'center'}}>
             {`${this.state.mechanic.latitude.toPrecision(7)}, ${this.state.mechanic.longitude.toPrecision(7)}`}

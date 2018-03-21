@@ -7,9 +7,9 @@ import {
   StyleSheet
 } from "react-native";
 import { StackNavigator } from 'react-navigation';
+import
 
-
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -28,11 +28,9 @@ export default class Login extends Component {
     this.setState({ password: value})
   }
 
-  componentDidMount() {
-
-  }
 
   render() {
+    const {name, displayName, handlesubmit, error} = props
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Build And Go!</Text>
@@ -123,5 +121,42 @@ const styles = StyleSheet.create({
   }
 });
 
+export const mapLogin = (state) => {
+  return {
+    name: 'login',
+    displayName: 'Login',
+    error: state.user.error
+  }
+}
 
+const mapSignup = (state) => {
+  return {
+    name: 'signup',
+    displayName: 'Sign Up',
+    error: state.user.error
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleSubmit (evt) {
+      evt.preventDefault()
+      const formName = evt.target.name
+      const email = evt.target.email.value
+      const password = evt.target.password.value
+      dispatch(auth(email, password, formName))
+    }
+  }
+}
+
+export const Login = connect(mapLogin, mapDispatch)(Login)
+export const Signup = connect(mapSignup, mapDispatch)(Login)
+
+
+Login.propTypes = {
+  name: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  error: PropTypes.object
+}
 
