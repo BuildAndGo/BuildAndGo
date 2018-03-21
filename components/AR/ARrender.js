@@ -5,13 +5,13 @@ import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
-import { connect } from 'react-redux'
-import { fetchParts } from '../../store'
 
 
-var carbody = require("../../assets/tire.png")
+
+var tire = require("../../assets/tire.png")
 var red = require("../../assets/red.png")
-var tire = require('../../assets/carbody.png')
+var frame = require('../../assets/frame.png')
+var engine = require('../../assets/engine.png')
 
 class ARrender extends Component {
   constructor() {
@@ -27,7 +27,7 @@ class ARrender extends Component {
     this._onClick = this._onClick.bind(this);
   }
   componentDidMount(){
-    this.setState({ parts: [carbody, red, tire], inventory: [] })
+    this.setState({ parts: [frame, red, tire, engine], inventory: [] })
     //this.props.fetchParts()
   }
 
@@ -64,9 +64,9 @@ class ARrender extends Component {
 
        {
          this.state.parts && this.state.parts.map( (part, i) => {
-           var x = Math.floor(Math.random() * 2);
+           var x = Math.floor(Math.random() * 5);
            var y = Math.floor(Math.random() * 5)
-           var z = Math.floor(Math.random() * -8)
+           var z = Math.floor(Math.random() * -10)
            return (
              <ViroButton
              key={i}
@@ -82,13 +82,13 @@ class ARrender extends Component {
        }
 
        {
-         this.state.inventory.length === 3 &&
+         this.state.inventory.length === 1 &&
          Alert.alert(
           'You collected all the parts for your car!',
           'See your Inventory',
           [
             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'Inventory', onPress: () => console.log('hi')},
+            {text: 'Inventory', onPress: () => this.props.navigation.navigate('Profile')},
           ],
           { cancelable: false }
         )
@@ -112,16 +112,6 @@ class ARrender extends Component {
 
 // });
 
-const mapState = (state) => {
-  return {
-    parts: state.parts
-  }
-}
-
-const mapDispatch = dispatch => {
-  fetchParts: () => dispatch(fetchParts())
-}
-
-module.exports = connect()(ARrender)
+module.exports = ARrender
 
 //module.exports = ARrender;

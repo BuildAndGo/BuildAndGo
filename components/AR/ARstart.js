@@ -11,14 +11,11 @@ import { StackNavigator } from "react-navigation";
 // we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
 
-import { connect } from "react-redux";
-import { fetchParts } from "../../store";
-
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
 
-class Searching extends Component {
+export default class Searching extends Component {
   constructor() {
     super();
 
@@ -35,9 +32,6 @@ class Searching extends Component {
     this._exitViro = this._exitViro.bind(this);
   }
 
-  componentDidMount(){
-    this.props.fetchParts()
-  }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
@@ -99,15 +93,8 @@ class Searching extends Component {
 }
 
 
-const mapState = state => {
-  return {
-    parts: state.parts
-  }
-}
 
-const mapDispatch = ({ fetchParts })
-
-export default connect(mapState, mapDispatch)(Searching);
+module.exports = Searching
 
 
 
