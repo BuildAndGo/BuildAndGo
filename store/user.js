@@ -33,17 +33,17 @@ export default function (user = {}, action) {
 }
 
 export const fetchUser = user => dispatch => {
-  axios.get(`${serverUrl}/auth/login}`, user)
+  axios.post(`${serverUrl}/auth/login}`, user)
   .then(res => res.data)
   .then(userData => dispatch(loginUser(userData)))
-  .catch(err => console.error(`error fetching user: ${user.id}`, err))
+  .catch(err => console.warn(`error fetching user: ${user.id}`, err))
 };
 
 export const createUser = user => dispatch => {
-  axios.get(`${serverUrl}/auth/signup`, user)
+ axios.post(`${serverUrl}/auth/signup`, user)
   .then(res => res.data)
   .then(userData => dispatch(signupUser(userData)))
-  .catch(err => console.error('error creating user', err))
+  .catch(err => console.warn('error creating user', err))
 }
 
 export const logout = () =>

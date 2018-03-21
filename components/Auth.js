@@ -3,7 +3,7 @@ import { View, TouchableHighlight, TextInput, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { createUser, fetchUser } from '../store'
 import { StackNavigator } from 'react-navigation';
-import styles from './astyles'
+import styles from './styles'
 
 
 export class Auth extends Component {

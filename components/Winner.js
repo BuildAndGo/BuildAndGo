@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from './astyles'
+import styles from './styles'
 
 export default class Winner extends React.Component {
   render() {
