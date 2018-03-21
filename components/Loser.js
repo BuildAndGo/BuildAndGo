@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from './styles'
+import styles from './astyles'
 
 export default class Loser extends React.Component {
   render() {

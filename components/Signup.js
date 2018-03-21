@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Button, TextInput, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from "./styles";
+import styles from "./astyles";
 
 export default class Signup extends Component {
   constructor() {

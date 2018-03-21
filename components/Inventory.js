@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from './styles'
+import styles from './astyles'
 import { connect } from 'react-redux'
 import { fetchTypes } from '../store'
 

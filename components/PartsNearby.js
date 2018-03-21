@@ -7,7 +7,6 @@ import {
   Text,
   Image
 } from 'react-native'
-import MapView from 'react-native-maps'
 
 
 

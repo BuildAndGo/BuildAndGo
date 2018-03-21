@@ -13,7 +13,7 @@ import ARrender from './ARrender'
 import PartsNearby from './PartsNearby'
 
 export const RootStack = StackNavigator({
- Augh: {
+ Auth: {
    screen: Auth
  },
  Profile: {

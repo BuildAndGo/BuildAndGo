@@ -7,7 +7,6 @@ import {
   StyleSheet
 } from "react-native";
 import { StackNavigator } from 'react-navigation';
-import
 
 class Login extends Component {
   constructor() {
