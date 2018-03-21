@@ -32,17 +32,23 @@ export default function (user = {}, action) {
   }
 }
 
-export const fetchUser = user => dispatch => {
-  axios.post(`${serverUrl}/auth/login}`, user)
+export const fetchUser = (user) => async dispatch => {
+ await axios.post(`${serverUrl}/auth/login}`, user)
   .then(res => res.data)
-  .then(userData => dispatch(loginUser(userData)))
-  .catch(err => console.warn(`error fetching user: ${user.id}`, err))
+  .then(userData => {
+    dispatch(loginUser(userData))
+    return userData
+  })
+  .catch(err => console.warn(`error fetching user: ${user.email}`, err))
 };
 
 export const createUser = user => dispatch => {
  axios.post(`${serverUrl}/auth/signup`, user)
   .then(res => res.data)
-  .then(userData => dispatch(signupUser(userData)))
+  .then(userData => {
+    dispatch(signupUser(userData))
+    return userData
+  })
   .catch(err => console.warn('error creating user', err))
 }
 
@@ -52,7 +58,7 @@ export const logout = () =>
       .then(_ => {
         dispatch(removeUser());
       })
-.catch(err => console.log(err))
+.catch(err => console.warn(err))
 
 export const updateUser = (userId, edits) => dispatch => {
   axios.put(`${serverUrl}/api/users/userId`, edits)

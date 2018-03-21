@@ -11,10 +11,10 @@ export class Auth extends Component {
     super(props)
 
     this.state = {
-      email: '',
-      password: '',
-      message: '',
-      user: undefined
+      email: 'email@123.com',
+      password: '123',
+      message: ''
+      //user: undefined
     }
 
     this.handleSignup = this.handleSignup.bind(this)
@@ -39,13 +39,10 @@ export class Auth extends Component {
     this.setState({ message: '' })
     const { email, password } = this.state
     this.props
-      .getUser({ email, password })
-      .then(user => {
-        this.setState({ user: user })
-      })
+      .fetchUser({ email, password })
       .then(() => {
         if (
-          !this.state.user ||
+          !this.props.user ||
           !this.state.email ||
           !this.state.password
         ) {
@@ -98,7 +95,12 @@ export class Auth extends Component {
   }
 }
 
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
 
 const mapDispatch = { createUser, fetchUser }
 
-export default connect(null, mapDispatch)(Auth)
+export default connect(mapState, mapDispatch)(Auth)
