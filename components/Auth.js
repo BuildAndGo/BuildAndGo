@@ -14,7 +14,6 @@ export class Auth extends Component {
       email: 'email@123.com',
       password: '123',
       message: ''
-      //user: undefined
     }
 
     this.handleSignup = this.handleSignup.bind(this)
@@ -38,23 +37,14 @@ export class Auth extends Component {
   handleLogin() {
     this.setState({ message: '' })
     const { email, password } = this.state
-    this.props
-      .fetchUser({ email, password })
-      .then(() => {
-        if (
-          !this.props.user ||
-          !this.state.email ||
-          !this.state.password
-        ) {
-          this.setState({ message: 'User not found.' })
-        } else {
-          this.setState({ message: '' })
-          this.props.navigation.navigate('Profile')
+    this.props.fetchUser({ email, password })
+      this.props.profileNav
+      ? this.props.profileNav.navigate('Profile')
+      : this.props.navigation.navigate('Profile')
         }
-      })
 
-}
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Build And go!</Text>
