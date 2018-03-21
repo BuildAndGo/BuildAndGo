@@ -6,13 +6,14 @@ import { StackNavigator } from "react-navigation";
 
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
 import { connect } from 'react-redux'
-import { fetchParts } from '../store'
+import { fetchParts } from '../../store'
 
 
-var carbody = require("../assets/tire.png")
-var red = require("../assets/red.png")
-var tire = require('../assets/carbody.png')
-export default class ARrender extends Component {
+var carbody = require("../../assets/tire.png")
+var red = require("../../assets/red.png")
+var tire = require('../../assets/carbody.png')
+
+class ARrender extends Component {
   constructor() {
     super();
 
@@ -26,8 +27,8 @@ export default class ARrender extends Component {
     this._onClick = this._onClick.bind(this);
   }
   componentDidMount(){
-    //this.props.fetchParts()
     this.setState({ parts: [carbody, red, tire], inventory: [] })
+    //this.props.fetchParts()
   }
 
   _onClick() {
@@ -44,7 +45,7 @@ export default class ARrender extends Component {
 
 
   render() {
-
+ this.props.parts && console.warn(this.props.parts)
     return (
 
 
@@ -60,19 +61,6 @@ export default class ARrender extends Component {
          scale={[0.1, 0.1, 0.1]}
          type="OBJ"
        /> */}
-
-       {
-         this.state.inventory.length === 3 &&
-         Alert.alert(
-          'You collected all the parts for your car!',
-          'See your Inventory',
-          [
-            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'Inventory', onPress: () => console.log('hi')},
-          ],
-          { cancelable: false }
-        )
-       }
 
        {
          this.state.parts && this.state.parts.map( (part, i) => {
@@ -91,6 +79,19 @@ export default class ARrender extends Component {
            />
            )
          })
+       }
+
+       {
+         this.state.inventory.length === 3 &&
+         Alert.alert(
+          'You collected all the parts for your car!',
+          'See your Inventory',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'Inventory', onPress: () => console.log('hi')},
+          ],
+          { cancelable: false }
+        )
        }
 
        </ViroARScene>
@@ -117,8 +118,10 @@ const mapState = (state) => {
   }
 }
 
-export const mapDispatch = ({ fetchParts })
+const mapDispatch = dispatch => {
+  fetchParts: () => dispatch(fetchParts())
+}
 
-//module.exports = connect(mapState, mapDispatch)(ARrender)
+module.exports = connect()(ARrender)
 
-module.exports = ARrender;
+//module.exports = ARrender;

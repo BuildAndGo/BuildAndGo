@@ -37,4 +37,4 @@ class Inventory extends React.Component {
 
 export const mapDispatch = { fetchTypes }
 
-export default connect(mapState, mapDispatch)(Inventory)
+export default connect(null, mapDispatch)(Inventory)

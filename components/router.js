@@ -7,10 +7,11 @@ import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
 import Racing from './2DRacing'
-import Searching from './3DSearching'
 import Winner from './Winner'
 import Loser from './Loser'
-import ARrender from './ARrender'
+//var Searching = require('./AR/ARstart')
+import Searching from './AR/ARstart'
+//import ARrender from './AR/ARrender'
 import Inventory from './Inventory';
 
 export const RootStack = StackNavigator({
@@ -35,9 +36,9 @@ export const RootStack = StackNavigator({
  Loser: {
    screen: Loser
  },
- ARrender: {
-   screen: ARrender
- },
+//  ARrender: {
+//    screen: ARrender
+//  },
  Inventory: {
    screen: Inventory
  }

@@ -4,13 +4,14 @@ import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
 import { connect } from 'react-redux'
+import { fetchParts } from '../store'
 
 
 class Profile extends React.Component {
 
 
-
   render() {
+    console.warn(this.props)
     return (
       <View style={styles.container}>
         <Text>Welcome Back, Sarah!</Text>
@@ -43,4 +44,8 @@ export const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(Inventory)
+export const mapDispatchToProps = dispatch => ({
+  fetchParts: () => dispatch(fetchParts())
+})
+
+export default connect(mapState, mapDispatchToProps)(Profile)
