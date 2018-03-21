@@ -1,13 +1,6 @@
-/**
- * Copyright (c) 2017-present, Viro, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   Text,
@@ -16,13 +9,17 @@ import {
   PixelRatio,
   TouchableHighlight,
 } from 'react-native';
-import { StackNavigator } from "react-navigation";
 
+import { StackNavigator } from "react-navigation";
+// we have this prop =>  this.props.navigation.navigate('another screen')
 
 import {
   ViroSceneNavigator,
   ViroARSceneNavigator
 } from 'react-viro';
+
+import { connect } from 'react-redux'
+import { fetchParts } from '../store'
 
 /*
  TODO: Insert your API key below
@@ -41,7 +38,7 @@ var AR_NAVIGATOR_TYPE = "AR";
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
 var defaultNavigatorType = UNSET;
 
-export default class Searching extends Component {
+class Searching extends Component {
   constructor() {
     super();
 
@@ -53,6 +50,10 @@ export default class Searching extends Component {
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchParts()
   }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
@@ -82,7 +83,6 @@ export default class Searching extends Component {
 
             <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
-
 
         </View>
       </View>
@@ -171,8 +171,18 @@ var localStyles = StyleSheet.create({
     borderColor: '#fff',
   }
 });
+const mapState = (state) => {
+  return {
+    parts: state.parts
+  }
+}
 
-module.exports = Searching
+export const mapDispatch = { fetchParts }
+
+module.exports = connect(mapState, mapDispatch)(Searching)
+
+
+//module.exports = Searching
 
 
 

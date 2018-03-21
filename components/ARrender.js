@@ -5,9 +5,9 @@ import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
+import { connect } from 'react-redux'
+import { fetchParts } from '../store'
 
-import Inventory from './Inventory'
-import Footer from './Footer'
 
 var carbody = require("../assets/tire.png")
 var red = require("../assets/red.png")
@@ -26,6 +26,7 @@ export default class ARrender extends Component {
     this._onClick = this._onClick.bind(this);
   }
   componentDidMount(){
+    //this.props.fetchParts()
     this.setState({ parts: [carbody, red, tire], inventory: [] })
   }
 
@@ -109,5 +110,15 @@ export default class ARrender extends Component {
 //   }
 
 // });
+
+const mapState = (state) => {
+  return {
+    parts: state.parts
+  }
+}
+
+export const mapDispatch = ({ fetchParts })
+
+//module.exports = connect(mapState, mapDispatch)(ARrender)
 
 module.exports = ARrender;
