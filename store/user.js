@@ -32,14 +32,14 @@ export default function (user = {}, action) {
   }
 }
 
-export const fetchUser = (user) => async dispatch => {
- await axios.post(`${serverUrl}/auth/login}`, user)
+export const fetchUser = (user) => dispatch => {
+ axios.post(`${serverUrl}/auth/login`, user)
   .then(res => res.data)
   .then(userData => {
     dispatch(loginUser(userData))
     return userData
   })
-  .catch(err => console.warn(`error fetching user: ${user.email}`, err))
+  .catch(err => console.warn(`error fetching user: ${user.email}`, err, err.response.data, err.response.status, err.response.headers))
 };
 
 export const createUser = user => dispatch => {

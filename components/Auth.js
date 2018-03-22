@@ -11,8 +11,8 @@ export class Auth extends Component {
     super(props)
 
     this.state = {
-      email: 'email@123.com',
-      password: '123',
+      email: '',
+      password: '',
       message: ''
     }
 
