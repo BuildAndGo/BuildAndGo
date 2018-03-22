@@ -39,7 +39,7 @@ export const fetchUser = (user) => dispatch => {
     dispatch(loginUser(userData))
     return userData
   })
-  .catch(err => console.warn(`error fetching user: ${user.email}`, err, err.response.data, err.response.status, err.response.headers))
+  .catch(err => console.warn(`error fetching user: ${user.email}`, err))
 };
 
 export const createUser = user => dispatch => {
