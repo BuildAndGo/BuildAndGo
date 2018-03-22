@@ -11,10 +11,10 @@ class Profile extends React.Component {
 
 
   render() {
-    console.warn(this.props)
+
     return (
       <View style={styles.container}>
-        <Text>Welcome Back, Sarah!</Text>
+        {this.props.user && this.props.user.email ? <Text>Welcome To Build And Go, {this.props.user.email}!</Text> : <Text>Welcome To Build And Go!</Text>}
 
         <Inventory />
 
@@ -37,10 +37,9 @@ class Profile extends React.Component {
 }
 
 
-
-export const mapState = (state) => {
+const mapState = state => {
   return {
-    types: state.allTypes
+    user: state.user
   }
 }
 

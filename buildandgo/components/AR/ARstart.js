@@ -45,7 +45,7 @@ export default class Searching extends Component {
 
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
-    //this.props.parts && console.error(this.props)
+
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
@@ -58,18 +58,33 @@ export default class Searching extends Component {
           >
             <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
+
+          <TouchableHighlight
+            style={localStyles.buttons}
+            onPress={()=>this.props.navigation.navigate('Profile')}
+            underlayColor={"#68a0ff"}
+          >
+            <Text style={localStyles.buttonText}>profile!</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
   }
 
+
+
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
+
     return (
+
+
 
         <ViroARSceneNavigator
           {...this.state.sharedProps}
           initialScene={{ scene: require("./ARrender") }}
+          viroAppProps={this.props.navigation}
+
         />
 
 
