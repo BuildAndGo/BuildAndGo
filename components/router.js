@@ -6,11 +6,13 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import Auth from './Auth'
 import Profile from './Profile'
 import Racing from './2DRacing'
-import Searching from './3DSearching'
 import Winner from './Winner'
 import Loser from './Loser'
-import ARrender from './ARrender'
-import PartsNearby from './PartsNearby'
+//var Searching = require('./AR/ARstart')
+import Searching from './AR/ARstart'
+import ARrender from './AR/ARrender'
+import Inventory from './Inventory';
+import CompleteCar from './CompleteCar'
 
 export const RootStack = StackNavigator({
  Auth: {
@@ -34,7 +36,10 @@ export const RootStack = StackNavigator({
  ARrender: {
    screen: ARrender
  },
- PartsNearby: {
-  screen: PartsNearby
+ Inventory: {
+   screen: Inventory
+ },
+ CompleteCar: {
+   screen: CompleteCar
  }
 })
