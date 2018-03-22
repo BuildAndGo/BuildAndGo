@@ -23,6 +23,14 @@ export default styles = StyleSheet.create({
     top: 500,
     position: 'absolute'
   },
+  button3: {
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    opacity: 0.5,
+    padding: 10,
+    top: 550,
+    position: 'absolute'
+  },
   tagLine: {
     alignItems: 'center',
     color: '#FFFFFF',

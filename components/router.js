@@ -11,12 +11,13 @@ import Winner from './Winner'
 import Loser from './Loser'
 //var Searching = require('./AR/ARstart')
 import Searching from './AR/ARstart'
-//import ARrender from './AR/ARrender'
+import ARrender from './AR/ARrender'
 import Inventory from './Inventory';
+import CompleteCar from './CompleteCar'
 
 export const RootStack = StackNavigator({
  Login : {
-   screen: Searching
+   screen: Login
  },
  Signup: {
    screen: Signup
@@ -36,10 +37,13 @@ export const RootStack = StackNavigator({
  Loser: {
    screen: Loser
  },
-//  ARrender: {
-//    screen: ARrender
-//  },
+ ARrender: {
+   screen: ARrender
+ },
  Inventory: {
    screen: Inventory
+ },
+ CompleteCar: {
+   screen: CompleteCar
  }
 })

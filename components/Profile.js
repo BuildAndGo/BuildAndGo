@@ -11,7 +11,7 @@ class Profile extends React.Component {
 
 
   render() {
-    console.warn(this.props)
+
     return (
       <View style={styles.container}>
         <Text>Welcome Back, Sarah!</Text>

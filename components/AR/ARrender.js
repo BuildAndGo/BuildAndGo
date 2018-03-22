@@ -3,10 +3,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
-
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
-
-
 
 var tire = require("../../assets/tire.png")
 var red = require("../../assets/red.png")
@@ -17,41 +14,30 @@ class ARrender extends Component {
   constructor() {
     super();
 
-    // Set initial state here
     this.state = {
       inventory: [],
       parts: []
     };
 
-    // bind 'this' to functions
     this._onClick = this._onClick.bind(this);
+
   }
+
   componentDidMount(){
     this.setState({ parts: [frame, red, tire, engine], inventory: [] })
-    //this.props.fetchParts()
   }
 
   _onClick() {
     var array = this.state.parts;
     var out = array.splice(0, 1);
     this.setState({parts: array, inventory: [...this.state.inventory, out] })
-
-    // this.props.sceneNavigator.jump('Inventory', {
-    //   scene: require('./Inventory')
-    // })
-    //this.props.sceneNavigator.push({scene:require('./Inventory')});
-
   }
 
 
   render() {
- this.props.parts && console.warn(this.props.parts)
+
     return (
 
-
-      // this.props.navigation.navigation.navigate('Inventory')
-
-      //  :
        <ViroARScene>
 
        {/* <Viro3DObject
@@ -82,13 +68,14 @@ class ARrender extends Component {
        }
 
        {
-         this.state.inventory.length === 1 &&
+
+         this.state.inventory.length === 4 &&
          Alert.alert(
-          'You collected all the parts for your car!',
+          'You collected all parts for your car!',
           'See your Inventory',
           [
-            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'Inventory', onPress: () => this.props.navigation.navigate('Profile')},
+            {text: 'Keep Looking', style: 'cancel'},
+            {text: 'Inventory', onPress: () => this.props.arSceneNavigator.viroAppProps.navigate('CompleteCar')},
           ],
           { cancelable: false }
         )
@@ -96,22 +83,8 @@ class ARrender extends Component {
 
        </ViroARScene>
 
-
-
-
     );
   }
 }
 
-// var styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center"
-//   }
-
-// });
-
 module.exports = ARrender
-
-//module.exports = ARrender;
