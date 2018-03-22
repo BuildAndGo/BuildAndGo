@@ -4,19 +4,21 @@ import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
 import { connect } from 'react-redux'
-import { fetchParts } from '../store'
+import { fetchCurrentInventory } from '../store'
 
 
 class Profile extends React.Component {
-
+  componentDidMount() {
+    console.log(this.props.user)
+    this.props.fetchCurrentInventory(this.props.user.id);
+  }
 
   render() {
-
     return (
       <View style={styles.container}>
         {this.props.user && this.props.user.email ? <Text>Welcome To Build And Go, {this.props.user.email}!</Text> : <Text>Welcome To Build And Go!</Text>}
+        { Object.keys(this.props.user).length ? <Inventory inventory={this.props.user.parts} /> : null  }
 
-        <Inventory />
 
         <TouchableOpacity
           style={styles.button}
@@ -36,16 +38,9 @@ class Profile extends React.Component {
   }
 }
 
+const mapState  = ({ user, currentInventory }) => ({ user, currentInventory })
 
-const mapState = state => {
-  return {
-    user: state.user
-  }
-}
+const mapDispatch = { fetchCurrentInventory }
 
-export const mapDispatchToProps = dispatch => ({
-  fetchParts: () => dispatch(fetchParts())
-})
-
-export default connect(mapState, mapDispatchToProps)(Profile)
+export default connect(mapState, mapDispatch)(Profile);
 

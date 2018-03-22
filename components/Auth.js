@@ -13,7 +13,7 @@ export class Auth extends Component {
     this.state = {
       email: '',
       password: '',
-      message: ''
+      message: '',
     }
 
     this.handleSignup = this.handleSignup.bind(this)
@@ -38,10 +38,9 @@ export class Auth extends Component {
     this.setState({ message: '' })
     const { email, password } = this.state
     this.props.fetchUser({ email, password })
-      this.props.profileNav
-      ? this.props.profileNav.navigate('Profile')
-      : this.props.navigation.navigate('Profile')
-        }
+    console.log('fetched user')
+    this.props.navigation.navigate('Profile')
+  }
 
   render() {
 
@@ -69,14 +68,14 @@ export class Auth extends Component {
         <TouchableHighlight
           underlayColor={'#f9f5ec'}
           style={styles.button}
-          onPress={this.handleLogin.bind(this)}
+          onPress={this.handleLogin}
         >
           <Text style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}}>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
           underlayColor={'#f9f5ec'}
           style={styles.button2}
-          onPress={this.handleSignup.bind(this)}
+          onPress={this.handleSignup}
         >
           <Text style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}}>Sign Up</Text>
         </TouchableHighlight>
@@ -85,11 +84,7 @@ export class Auth extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    user: state.user
-  }
-}
+const mapState = ({ user }) => ({ user })
 
 const mapDispatch = { createUser, fetchUser }
 

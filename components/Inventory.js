@@ -3,19 +3,21 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles'
 import { connect } from 'react-redux'
-import { fetchTypes } from '../store'
+// import { fetchCurrentInventory } from '../store'
 
 
-class Inventory extends React.Component {
+export default class Inventory extends React.Component {
   // constructor(props) {
   //   super(props)
   // }
 
- componentDidMount() {
-    this.props.fetchTypes()
-  }
+//  componentDidMount() {
+    // this.props.fetchCurrentInventory(this.props.user.id)
+    // console.log(this.props)
+//   }
 
   render() {
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <Text>Inventory</Text>
@@ -29,12 +31,8 @@ class Inventory extends React.Component {
   }
 }
 
- const mapState  = (state) => {
-  return {
-    types: state.allTypes
-  }
-}
+// const mapState  = ({ user, currentInventory }) => ({ user, currentInventory })
 
-export const mapDispatch = { fetchTypes }
+// export const mapDispatch = { fetchCurrentInventory }
 
-export default connect(null, mapDispatch)(Inventory)
+// export default connect(mapState, mapDispatch)(Inventory)
