@@ -1,5 +1,5 @@
 import axios from 'axios';
-const serverUrl = "https://build-and-go.herokuapp.com";
+const serverUrl = 'https://build-and-go.herokuapp.com';
 
 
 const GET_CURRENT_INVENTORY = 'GET_CURRENT_INVENTORY';
@@ -15,9 +15,12 @@ export default (currentInventory = {}, action) => {
   }
 }
 
-export const fetchCurrentInventory = id => dispatch => {
-    axios.get(`${serverUrl}/api/inventories/${id}`)
-    .then(res => res.json())
-    .then(inventory => dispatch(getCurrentInventory(inventory)))
-    .catch(err => console.error(`error fetching inventory id: ${id}`, err))
+export const fetchCurrentInventory = userId => dispatch => {
+    axios.get(`${serverUrl}/api/users/${userId}/inventory`)
+    .then(res => res.data)
+    .then(parts => {
+      dispatch(getCurrentInventory(parts))
+      console.log(parts);
+    })
+    .catch(err => console.error(`error fetching inventory for user id: ${userId}`, err))
 };
