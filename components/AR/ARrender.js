@@ -5,10 +5,10 @@ import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
 
-var tire = require("../../assets/tire.png")
-var red = require("../../assets/red.png")
-var frame = require('../../assets/frame.png')
-var engine = require('../../assets/engine.png')
+let tire = require('../../assets/tire.png')
+let red = require('../../assets/red.png')
+let frame = require('../../assets/frame.png')
+let engine = require('../../assets/engine.png')
 
 class ARrender extends Component {
   constructor() {
@@ -16,20 +16,18 @@ class ARrender extends Component {
 
     this.state = {
       inventory: [],
-      parts: []
+      parts: [frame, red, tire, engine],
+      found: false
     };
 
     this._onClick = this._onClick.bind(this);
 
   }
 
-  componentDidMount(){
-    this.setState({ parts: [frame, red, tire, engine], inventory: [] })
-  }
-
-  _onClick() {
-    var array = this.state.parts;
-    var out = array.splice(0, 1);
+  _onClick(part) {
+    //let found = part
+    let array = this.state.parts;
+    let out = array.splice(array.indexOf(part), 1)
     this.setState({parts: array, inventory: [...this.state.inventory, out] })
   }
 
@@ -50,18 +48,18 @@ class ARrender extends Component {
 
        {
          this.state.parts && this.state.parts.map( (part, i) => {
-           var x = Math.floor(Math.random() * 5);
-           var y = Math.floor(Math.random() * 5)
-           var z = Math.floor(Math.random() * -10)
+           let x = Math.floor(Math.random() * 15);
+           let y = Math.floor(Math.random() * 4)
+           let z = Math.floor(Math.random() * -5)
            return (
              <ViroButton
              key={i}
              source={part}
-             position={[x,y,z]}
+             position={[x, y, z]}
              height={2}
              width={3}
-             onClick={this._onClick}
-             onDrag={()=>{}}
+             onClick={() => this._onClick(part)}
+             onDrag={() => {}}
            />
            )
          })
