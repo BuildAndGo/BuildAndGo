@@ -3,8 +3,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Inventory from "./Inventory";
 import styles from "./styles";
+<<<<<<< HEAD
 import { connect } from 'react-redux'
 import { fetchParts } from '../store'
+=======
+import { connect } from 'react-redux';
+>>>>>>> 5ee43717cb61f6a69071431cec216b91238b5dd9
 
 
 class Profile extends React.Component {
@@ -14,7 +18,7 @@ class Profile extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>Welcome Back, Sarah!</Text>
+        {this.props.user && this.props.user.email ? <Text>Welcome To Build And Go, {this.props.user.email}!</Text> : <Text>Welcome To Build And Go!</Text>}
 
         <Inventory />
 
@@ -37,15 +41,18 @@ class Profile extends React.Component {
 }
 
 
-
-export const mapState = (state) => {
+const mapState = state => {
   return {
-    types: state.allTypes
+    user: state.user
   }
 }
 
+<<<<<<< HEAD
 export const mapDispatchToProps = dispatch => ({
   fetchParts: () => dispatch(fetchParts())
 })
 
 export default connect(mapState, mapDispatchToProps)(Profile)
+=======
+export default connect(mapState)(Profile)
+>>>>>>> 5ee43717cb61f6a69071431cec216b91238b5dd9
