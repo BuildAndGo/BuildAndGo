@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
-export default styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -35,7 +35,42 @@ export default styles = StyleSheet.create({
   text: {
     color: '#3f348c',
     fontFamily: 'Arial'
+  },
+  containerInput: {
+    width: '90%'
+  },
+  input: {
+    height: 35,
+    backgroundColor: 'rgba(192,192,192,0.3)',
+    marginBottom: 25,
+    width: '90%'
+  },
+  containerButtonTop: {
+    padding: 10,
+    width: '100%',
+    marginTop: 60
+  },
+  containerButton: {
+    height: 60,
+    width: 40,
+    marginTop: 20,
+    backgroundColor: '#474787',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  labelContainerStyle: {
+    marginTop: 8
+  },
+  formContainer: {
+    padding: 10
+  },
+  message: {
+    color: '#FF5252',
+    fontSize: 15,
+    fontWeight: 'bold',
+    padding: 20
   }
 })
 
-
+export default styles

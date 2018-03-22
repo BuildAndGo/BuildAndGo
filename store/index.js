@@ -4,14 +4,14 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import allParts from './allParts';
 import allTypes from './allTypes';
-import currentUser from './currentUser';
+import user from './user';
 import currentInventory from './currentInventory';
 import currentPart from './currentPart';
 
 const reducer = combineReducers({
   allParts,
   allTypes,
-  currentUser,
+  user,
   currentInventory,
   currentPart
 });
@@ -26,6 +26,6 @@ const store = createStore(reducer, middleware);
 export default store;
 export * from './allParts';
 export * from './allTypes';
-export * from './currentUser';
+export * from './user';
 export * from './currentInventory';
 export * from './currentPart';
