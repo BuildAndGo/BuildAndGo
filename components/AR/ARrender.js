@@ -25,7 +25,6 @@ class ARrender extends Component {
   }
 
   _onClick(part) {
-    //let found = part
     let array = this.state.parts;
     let out = array.splice(array.indexOf(part), 1)
     this.setState({parts: array, inventory: [...this.state.inventory, out] })
