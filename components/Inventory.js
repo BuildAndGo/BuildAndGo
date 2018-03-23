@@ -3,36 +3,37 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles'
 import { connect } from 'react-redux'
-// import { fetchCurrentInventory } from '../store'
+ import { fetchCurrentInventory } from '../store'
 
 
-export default class Inventory extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
-
-//  componentDidMount() {
-    // this.props.fetchCurrentInventory(this.props.user.id)
-    // console.log(this.props)
-//   }
+export class Inventory extends React.Component {
+ componentDidMount() {
+    this.props.fetchCurrentInventory(this.props.user.id)
+  }
 
   render() {
-    console.log(this.props);
+    const inventory = this.props.currentInventory;
     return (
       <View style={styles.container}>
         <Text>Inventory</Text>
-        {/* {this.props.types && this.props.types.length ? <Image source={{uri: this.props.types[0].image}} style={{width: 200, height: 200}} /> : <Text>Cats</Text>} */}
-        <Text>Item2</Text>
-        <Text>Item3</Text>
-        <Text>Item4</Text>
-        <Text>Item5</Text>
+        {inventory && inventory.length ?
+        inventory.map(item => {
+          return (
+          <View key={item.id}>
+            <Text>{item.name}</Text>
+            <Image source={{uri: inventory.image}} />
+          </View>
+          )
+        })
+        : <Text>...</Text>
+        }
       </View>
     );
   }
 }
 
-// const mapState  = ({ user, currentInventory }) => ({ user, currentInventory })
+const mapState  = ({ user, currentInventory }) => ({ user, currentInventory })
 
-// export const mapDispatch = { fetchCurrentInventory }
+export const mapDispatch = { fetchCurrentInventory }
 
-// export default connect(mapState, mapDispatch)(Inventory)
+export default connect(mapState, mapDispatch)(Inventory)

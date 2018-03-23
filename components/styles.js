@@ -12,7 +12,7 @@ import {StyleSheet} from 'react-native';
     backgroundColor: '#FFFFFF',
     opacity: 0.5,
     padding: 10,
-    top: 450,
+    top: 400,
     position: 'absolute'
   },
   button2: {
@@ -20,7 +20,7 @@ import {StyleSheet} from 'react-native';
     backgroundColor: '#FFFFFF',
     opacity: 0.5,
     padding: 10,
-    top: 500,
+    top: 450,
     position: 'absolute'
   },
   button3: {
@@ -28,7 +28,7 @@ import {StyleSheet} from 'react-native';
     backgroundColor: '#FFFFFF',
     opacity: 0.5,
     padding: 10,
-    top: 550,
+    top: 500,
     position: 'absolute'
   },
   tagLine: {
