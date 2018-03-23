@@ -1,35 +1,35 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import Inventory from "./Inventory";
 import styles from "./styles";
 import { connect } from 'react-redux'
 import { fetchCurrentInventory } from '../store'
 
 
 class Profile extends React.Component {
-  componentDidMount() {
-    console.log(this.props.user)
-    this.props.fetchCurrentInventory(this.props.user.id);
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        {this.props.user && this.props.user.email ? <Text>Welcome To Build And Go, {this.props.user.email}!</Text> : <Text>Welcome To Build And Go!</Text>}
-        { Object.keys(this.props.user).length ? <Inventory inventory={this.props.user.parts} /> : null  }
-
+        {this.props.user && this.props.user.email ? <Text>Welcome To Build And Go, {this.props.user.email}!</Text> : <Text>...</Text>}
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate("Searching")}
+          onPress={() => this.props.navigation.navigate('Searching', {user: this.props.user})}
         >
           <Text>Start Searching</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button2}
-          onPress={() => this.props.navigation.navigate("Racing")}
+          onPress={() => this.props.navigation.navigate('Inventory', {user: this.props.user})}
+        >
+          <Text>View Inventory</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button3}
+          onPress={() => this.props.navigation.navigate('Racing')}
         >
           <Text>Start Racing</Text>
         </TouchableOpacity>
@@ -38,9 +38,7 @@ class Profile extends React.Component {
   }
 }
 
-const mapState  = ({ user, currentInventory }) => ({ user, currentInventory })
+const mapState  = ({ user }) => ({ user })
 
-const mapDispatch = { fetchCurrentInventory }
-
-export default connect(mapState, mapDispatch)(Profile);
+export default connect(mapState)(Profile);
 

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
+import { connect } from 'react-redux';
 
 let tire = require('../../assets/tire.png')
 let red = require('../../assets/red.png')
@@ -15,7 +16,7 @@ class ARrender extends Component {
     super();
 
     this.state = {
-      inventory: [],
+      lclInventory: [],
       parts: [frame, red, tire, engine],
       found: false
     };
@@ -27,14 +28,13 @@ class ARrender extends Component {
   _onClick(part) {
     let array = this.state.parts;
     let out = array.splice(array.indexOf(part), 1)
-    this.setState({parts: array, inventory: [...this.state.inventory, out] })
+    this.setState({parts: array, lclInventory: [...this.state.lclInventory, out] })
   }
 
 
   render() {
-
+      console.warn(this.props.inventory && this.props.inventory.length ? 'broccoli' + this.props.inventory : 'cats')
     return (
-
        <ViroARScene>
 
        {/* <Viro3DObject
@@ -66,7 +66,7 @@ class ARrender extends Component {
 
        {
 
-         this.state.inventory.length === 4 &&
+         this.state.lclInventory.length === 4 &&
          Alert.alert(
           'You collected all parts for your car!',
           'See your Inventory',
@@ -83,5 +83,9 @@ class ARrender extends Component {
     );
   }
 }
+
+const mapState = ({inventory}) => ({inventory})
+
+export default connect(mapState)(ARrender)
 
 module.exports = ARrender
