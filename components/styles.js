@@ -2,6 +2,12 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
  const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover'
+},
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -41,11 +47,13 @@ import {StyleSheet} from 'react-native';
   },
 
   text: {
-    color: '#3f348c',
-    fontFamily: 'Arial'
+    color: '#ffffff',
+    fontFamily: 'Arial',
+    
   },
   containerInput: {
-    width: '90%'
+    width: '90%',
+   backgroundColor: '#0F1110'
   },
   input: {
     height: 35,
