@@ -5,6 +5,7 @@ import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
 import { connect } from 'react-redux';
+import { updateInventory } from '../../store'
 
 let tire = require('../../assets/tire.png')
 let red = require('../../assets/red.png')
@@ -29,8 +30,8 @@ class ARrender extends Component {
     let array = this.state.parts;
     let out = array.splice(array.indexOf(part), 1)
     this.setState({parts: array, lclInventory: [...this.state.lclInventory, out] })
+    updateInventory(this.props.user.id, this.lclInventory)
   }
-
 
   render() {
       console.warn(this.props.inventory && this.props.inventory.length ? 'broccoli' + this.props.inventory : 'cats')
@@ -76,6 +77,7 @@ class ARrender extends Component {
           ],
           { cancelable: false }
         )
+
        }
 
        </ViroARScene>
@@ -84,8 +86,9 @@ class ARrender extends Component {
   }
 }
 
-const mapState = ({inventory}) => ({inventory})
+const mapState = ({user, inventory}) => ({user, inventory})
+const mapDispatch = ({updateInventory})
 
-export default connect(mapState)(ARrender)
+export default connect(mapState, mapDispatch)(ARrender)
 
 module.exports = ARrender
