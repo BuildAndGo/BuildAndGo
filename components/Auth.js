@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, TextInput, Text } from 'react-native'
+import { View, TouchableHighlight, TextInput, Text, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { createUser, fetchUser } from '../store'
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation'
 import styles from './styles'
+
 
 
 export class Auth extends Component {
@@ -43,43 +44,49 @@ export class Auth extends Component {
   }
 
   render() {
-
-    return (
+return (
+  <Image source={require('../assets/img/loginbkg.jpg')} 
+  style={styles.backgroundImage}>
+   <Text style={styles.title}>Build and Go!</Text>
       <View style={styles.container}>
-        <Text style={styles.title}>Build And go!</Text>
+        <View style={styles.containerInput}>
         <TextInput
-          containerStyle={styles.containerInput}
+          // containerStyle={styles.containerInput}
           style={styles.input}
           placeholder="Email"
+          placeholderTextColor= "#000000"
           autoCapitalize="none"
           onChangeText={text => this.setState({ email: text })}
         />
         <TextInput
-          containerStyle={styles.containerInput}
+          // containerStyle={styles.containerInput}
           style={styles.input}
           secureTextEntry
           placeholder="Password"
+          placeholderTextColor= "#000000"
           autoCapitalize="none"
           onChangeText={text => this.setState({ password: text })}
         />
+          </View>
         {this.state.message ? (
           <Text style={styles.message}>{this.state.message}</Text>
         ) : null}
         <TouchableHighlight
-          underlayColor={'#f9f5ec'}
+          underlayColor={'rgba(255,255,255, .9)'}
           style={styles.button}
           onPress={this.handleLogin}
         >
-          <Text style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}}>Login</Text>
+          <Text style={styles.btnText}>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          underlayColor={'#f9f5ec'}
+          underlayColor={'rgba(255,255,255, .3)'}
           style={styles.button2}
           onPress={this.handleSignup}
         >
-          <Text style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}}>Sign Up</Text>
+          <Text style={styles.btnText}>Sign Up</Text>
         </TouchableHighlight>
       </View>
+      </Image>
     )
   }
 }

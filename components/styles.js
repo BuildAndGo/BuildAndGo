@@ -1,7 +1,14 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
+
  const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover'
+},
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -9,16 +16,14 @@ import {StyleSheet} from 'react-native';
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    opacity: 0.5,
+    backgroundColor: 'rgba(255,255,255, .85)',
     padding: 10,
     top: 400,
     position: 'absolute'
   },
   button2: {
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    opacity: 0.5,
+    backgroundColor: 'rgba(255,255,255, .85)',
     padding: 10,
     top: 450,
     position: 'absolute'
@@ -41,17 +46,21 @@ import {StyleSheet} from 'react-native';
   },
 
   text: {
-    color: '#3f348c',
-    fontFamily: 'Arial'
+    color: '#ffffff',
+    // fontFamily: 'Arial',
+    
   },
   containerInput: {
-    width: '90%'
+    width: '90%',
+   backgroundColor: 'rgba(255,255,255, .9)'
   },
   input: {
-    height: 35,
-    backgroundColor: 'rgba(192,192,192,0.3)',
+    height: 40,
+    backgroundColor: 'rgba(255,255,255, .325)',
+    color: 'rgba(0,0,0,1)',
     marginBottom: 25,
-    width: '90%'
+    width: '90%',
+    fontSize: 15
   },
   containerButtonTop: {
     padding: 10,
@@ -78,7 +87,29 @@ import {StyleSheet} from 'react-native';
     fontSize: 15,
     fontWeight: 'bold',
     padding: 20
+  },
+  btnText: {
+    fontSize: 20, 
+    color: '#000000', 
+    fontWeight: 'bold'
+  },
+  title: {
+    fontSize: 20, 
+    color: '#ffffff', 
+    fontWeight: 'bold',
+    top: 120,
+    textAlign: 'center',
+    fontFamily: 'Faster One'
+  },
+  titleProfile: {
+    fontSize: 20, 
+    color: '#ffffff', 
+    fontWeight: 'bold',
+    top: 90,
+    textAlign: 'center',
+    fontFamily: 'Faster One'
   }
 })
 
 export default styles
+
