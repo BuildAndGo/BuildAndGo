@@ -26,9 +26,7 @@ export default class Searching extends Component {
 
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(
-      this
-    );
+    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
 
@@ -77,8 +75,6 @@ export default class Searching extends Component {
   _getARNavigator() {
 
     return (
-
-
 
         <ViroARSceneNavigator
           {...this.state.sharedProps}

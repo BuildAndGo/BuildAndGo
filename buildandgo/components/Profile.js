@@ -27,7 +27,7 @@ class Profile extends React.Component {
 
         <TouchableOpacity
           style={styles.button2}
-          onPress={() => this.props.navigation.navigate("Racing")}
+          onPress={() => this.props.navigation.navigate("CompleteCar")}
         >
           <Text>Start Racing</Text>
         </TouchableOpacity>
@@ -48,3 +48,4 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapState, mapDispatchToProps)(Profile)
+module.exports = connect(mapState, mapDispatchToProps)(Profile)
