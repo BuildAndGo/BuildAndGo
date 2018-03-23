@@ -61,7 +61,7 @@ export default class Searching extends Component {
 
           <TouchableHighlight
             style={localStyles.buttons}
-            onPress={()=>this.props.navigation.navigate('Profile')}
+            onPress={()=>this.props.navigation.navigate('CompleteCar')}
             underlayColor={"#68a0ff"}
           >
             <Text style={localStyles.buttonText}>profile!</Text>
