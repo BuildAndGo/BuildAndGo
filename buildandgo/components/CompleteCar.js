@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./styles";
 import Inventory from "./Inventory";
-import { ViroSceneNavigator } from "react-viro";
+import { ViroARSceneNavigator } from "react-viro";
 
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
 var FirstScene = require("./2DRacing");
@@ -15,20 +15,8 @@ export default class CompleteCar extends React.Component {
       type: "completeCar"
     };
 
-    this._getVideo = this._getVideo.bind(this);
-    this._comepleteCar = this._comepleteCar.bind(this);
-    this._videoOrCar = this._videoOrCar.bind(this);
   }
 
-  _getVideo() {
-    return (
-      <ViroSceneNavigator
-        {...this.state.sharedProps}
-        initialScene={{ scene: FirstScene }}
-        viroAppProps={this.props.navigation}
-      />
-    );
-  }
 
   _comepleteCar() {
     return (
@@ -39,7 +27,7 @@ export default class CompleteCar extends React.Component {
 
         <TouchableOpacity
         style={styles.button}
-        onPress={this._videoOrCar('video')}>
+        onPress={() => this.props.navigation.navigate("Racing")}>
           <Text>Start Racing</Text>
         </TouchableOpacity>
 
