@@ -54,6 +54,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>FasterOne-Regular.ttf</string>
+		<string>PaytoneOne-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

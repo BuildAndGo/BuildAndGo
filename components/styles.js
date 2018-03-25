@@ -99,7 +99,7 @@ import {StyleSheet} from 'react-native';
     fontWeight: 'bold',
     top: 120,
     textAlign: 'center',
-    fontFamily: 'Faster One'
+    fontFamily: 'FasterOne-Regular'
   },
   titleProfile: {
     fontSize: 20, 
@@ -107,7 +107,7 @@ import {StyleSheet} from 'react-native';
     fontWeight: 'bold',
     top: 90,
     textAlign: 'center',
-    fontFamily: 'Faster One'
+    fontFamily: 'FasterOne-Regular'
   }
 })
 
