@@ -17,7 +17,11 @@ class ARrender extends Component {
 
     this.state = {
       lclInventory: [],
-      parts: [frame, red, tire, engine],
+      parts: [
+      {id: 1, type: frame, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 2, type: red, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 3, type: tire, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 4, type: engine, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6}],
       found: false
     };
 
@@ -46,18 +50,15 @@ class ARrender extends Component {
        /> */}
 
        {
-         this.state.parts && this.state.parts.map( (part, i) => {
-           let x = Math.floor(Math.random() * 15);
-           let y = Math.floor(Math.random() * 4)
-           let z = Math.floor(Math.random() * -5)
+         this.state.parts && this.state.parts.map( part => {
            return (
              <ViroButton
-             key={i}
-             source={part}
-             position={[x, y, z]}
+             key={part.id}
+             source={part.type}
+             position={[part.x, part.y, part.z]}
              height={2}
              width={3}
-             onClick={() => this._onClick(part)}
+             onClick={() => this._onClick(part.type)}
              onDrag={() => {}}
            />
            )

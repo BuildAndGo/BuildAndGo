@@ -14,6 +14,10 @@ import {StyleSheet} from 'react-native';
     justifyContent: 'center',
     alignItems: 'center',
   },
+  inventoryContainer: {
+    padding: 150,
+    backgroundColor: 'rgba(0,0,0, .8)'
+  },
   button: {
     alignItems: 'center',
     backgroundColor: 'rgba(255,255,255, .85)',
@@ -100,6 +104,24 @@ import {StyleSheet} from 'react-native';
     top: 120,
     textAlign: 'center',
     fontFamily: 'FasterOne-Regular'
+  },
+  inventoryTitle: {
+    fontSize: 20, 
+    top: -70,
+    color: '#ffffff', 
+    fontWeight: 'bold',
+  },
+   inventory: {
+    fontSize: 15, 
+    color: '#ffffff', 
+    top: -50,
+    fontWeight: 'bold',
+  },
+  stillNeededTitle: {
+    fontSize: 20, 
+    top: -20,
+    color: '#ffffff', 
+    fontWeight: 'bold',
   },
   titleProfile: {
     fontSize: 20, 
