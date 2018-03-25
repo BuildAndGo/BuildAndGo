@@ -1,28 +1,26 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from './styles'
+import { ViroARScene, ViroVideo } from "react-viro";
 
 export default class Racing extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>This is 2D Racing Page</Text>
+      <ViroARScene>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate("Winner")}
-        >
-          <Text>Go to Winner</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.button2}
-          onPress={() => this.props.navigation.navigate("Loser")}
-        >
-          <Text>Go to Loser</Text>
-        </TouchableOpacity>
-      </View>
+        <ViroVideo
+          source={require("../assets/racing.mp4")}
+          onFinish={() =>
+            this.props.arSceneNavigator.viroAppProps.navigate("Winner")
+          }
+          loop={true}
+          paused={false}
+          position={[0, 0, -5]}
+          scale={[2, 2, 0]}
+          volume={1.0}
+        />
+      </ViroARScene>
     );
   }
 }
+
+module.exports = Racing;
