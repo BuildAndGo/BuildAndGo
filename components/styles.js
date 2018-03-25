@@ -100,7 +100,6 @@ import {StyleSheet} from 'react-native';
   title: {
     fontSize: 20, 
     color: '#ffffff', 
-    fontWeight: 'bold',
     top: 120,
     textAlign: 'center',
     fontFamily: 'FasterOne-Regular'
@@ -128,10 +127,9 @@ import {StyleSheet} from 'react-native';
     color: '#ffffff', 
     fontWeight: 'bold',
     top: 90,
-    textAlign: 'center',
-    fontFamily: 'FasterOne-Regular'
+    textAlign: 'center'
   }
 })
 
-export default styles
+export default styles;
 

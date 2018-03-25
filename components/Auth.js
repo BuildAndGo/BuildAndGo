@@ -46,6 +46,7 @@ export class Auth extends Component {
 
   render() {
 return (
+  // image used from http://
   <Image source={require('../assets/img/loginbkg.jpg')} 
   style={styles.backgroundImage}>
    <Text style={styles.title}>Build and Go!</Text>
@@ -55,7 +56,7 @@ return (
           // containerStyle={styles.containerInput}
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor= "#000000"
+          placeholderTextColor="#000000"
           autoCapitalize="none"
           onChangeText={text => this.setState({ email: text })}
         />
