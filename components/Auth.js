@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { View, TouchableHighlight, TextInput, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { createUser, fetchUser } from '../store';
-import { StackNavigator } from 'react-navigation';
 import styles from './styles';
-
-
 
 
 export class Auth extends Component {
@@ -16,6 +13,7 @@ export class Auth extends Component {
       email: '',
       password: '',
       message: '',
+      user: null
     };
 
     this.handleSignup = this.handleSignup.bind(this)
@@ -30,30 +28,35 @@ export class Auth extends Component {
     } else {
       this.setState({ message: '' })
       this.props.createUser({ email, password });
-      this.props.profileNav
-        ? this.props.profileNav.navigate('Profile')
-        : this.props.navigation.navigate('Profile')
+      this.props.navigation.navigate('Profile');
     }
   }
 
   handleLogin() {
     this.setState({ message: '' });
     const { email, password } = this.state
-    this.props.fetchUser({ email, password });
-    console.log('fetched user');
-    this.props.navigation.navigate('Profile');
+    this.props.fetchUser({ email, password })
+    .then(user => this.setState({user: user}))
+    .then(() => {
+      if (!this.state.user){
+      this.setState({message: 'User not found'})
+    } else {
+      this.setState({message: ''})
+      this.props.navigation.navigate('Profile')
+      }
+    })
   }
 
-  render() {
+render() {
+  //console.log(this.state.user)
 return (
   // image used from http://
-  <Image source={require('../assets/img/loginbkg.jpg')} 
+  <Image source={require('../assets/img/loginbkg.jpg')}
   style={styles.backgroundImage}>
    <Text style={styles.title}>Build and Go!</Text>
       <View style={styles.container}>
         <View style={styles.containerInput}>
         <TextInput
-          // containerStyle={styles.containerInput}
           style={styles.input}
           placeholder="Email"
           placeholderTextColor="#000000"
@@ -61,7 +64,6 @@ return (
           onChangeText={text => this.setState({ email: text })}
         />
         <TextInput
-          // containerStyle={styles.containerInput}
           style={styles.input}
           secureTextEntry
           placeholder="Password"
