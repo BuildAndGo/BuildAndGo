@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import axios from 'axios';
-import { ViroARScene, Viro3DObject, ViroButton, ViroSceneNavigator } from "react-viro";
+import { ViroARScene, ViroVideo, ViroButton, ViroSceneNavigator } from "react-viro";
 import { Provider, connect } from 'react-redux';
 // import { updateInventory } from '../../store'
 
@@ -12,6 +12,9 @@ import { Provider, connect } from 'react-redux';
 // let frame = require('../../assets/frame.png')
 // let engine = require('../../assets/engine.png')
 
+import { StackNavigator } from "react-navigation";
+
+
 
 class ARrender extends Component {
   constructor() {
@@ -19,6 +22,9 @@ class ARrender extends Component {
 
     this.state = {
       lclInventory: [],
+      video: null,
+      stopAlert: null,
+
       // parts: [frame, red, tire, engine],
       // parts: [
       // {id: 1, type: frame, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
@@ -30,6 +36,8 @@ class ARrender extends Component {
     };
 
     this._onClick = this._onClick.bind(this);
+    this._randomResult = this._randomResult.bind(this)
+    this._resultAlert = this._resultAlert.bind(this)
   }
 
   componentDidMount() {
@@ -48,20 +56,32 @@ class ARrender extends Component {
     // updateInventory(this.props.user.id, this.lclInventory)
   }
 
+  _randomResult() {
+    var truthyOrFalsy = Math.floor((Math.random() * 2));
+    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigate("Winner")
+    else return this.props.arSceneNavigator.viroAppProps.navigate("Loser")
+  }
+
+  _resultAlert(){
+
+    Alert.alert(
+      'You finished the racing!',
+      'See the result!',
+      [
+        {text: 'cancel', style: 'cancel'},
+        {text: 'Who\'s Winner?', onPress: this._randomResult},
+      ],
+      { cancelable: false }
+    )
+  }
+
   render() {
       // console.warn(this.props.currentInventory && this.props.currentInventory.length ? 'broccoli' + this.props.currentInventory : 'cats')
     let { types, inventory } = this.props.arSceneNavigator.viroAppProps;
+
     return (
        <ViroARScene>
       { console.warn(types[0].image) }
-
-       {/* <Viro3DObject
-         source={require("../assets/tire.obj")}
-         resources={[require("../assets/tire.mtl")]}
-         position={[0.0, 0.0, -10]}
-         scale={[0.1, 0.1, 0.1]}
-         type="OBJ"
-       /> */}
 
        {
          types && types.map(type => {
@@ -84,17 +104,36 @@ class ARrender extends Component {
        }
 
        {
-         this.state.lclInventory.length === 4 &&
+         this.state.lclInventory.length === 2 &&
+         this.state.stopAlert === null &&
          Alert.alert(
           'You collected all parts for your car!',
           'See your Inventory',
           [
-            { text: 'Keep Looking', style: 'cancel' },
-            { text: 'Inventory', onPress: () => this.props.arSceneNavigator.viroAppProps.navigate('CompleteCar') },
+            // { text: 'Inventory', onPress: () => this.props.arSceneNavigator.viroAppProps.navigate('CompleteCar') },
+            {text: 'Keep Looking', style: 'cancel'},
+            {text: 'Start Racing', onPress: () =>  this.setState({ video: true, stopAlert: true })},
           ],
           { cancelable: false }
         )
        }
+
+       {
+         this.state.video &&
+         <ViroVideo
+         source={require("../../assets/racing.mp4")}
+         onFinish={ () => {
+                  this._resultAlert()
+            return this.setState({video: null})
+        }}
+         loop={true}
+         paused={false}
+         position={[0, 0, -5]}
+         scale={[2, 2, 0]}
+         volume={1.0}
+       />
+       }
+
        </ViroARScene>
     );
   }
