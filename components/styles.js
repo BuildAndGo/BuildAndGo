@@ -40,6 +40,18 @@ import {StyleSheet} from 'react-native';
     top: 300,
     position: 'absolute'
   },
+  logout: {
+   top: 5,
+   right: 5,
+    backgroundColor: 'rgba(255,255,255, .9)',
+    padding: 5,
+    position: 'absolute'
+  },
+  logoutTxt: {
+    fontSize: 12,
+    color: '#000000',
+    fontFamily: 'PaytoneOne-Regular'
+  },
   tagLine: {
     alignItems: 'center',
     color: '#FFFFFF',

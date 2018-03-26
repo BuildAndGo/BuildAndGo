@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, TextInput, Text, Image } from 'react-native';
+import { View, TouchableHighlight, TextInput, Text, Image} from 'react-native';
 import { connect } from 'react-redux';
 import { createUser, fetchUser } from '../store';
 import styles from './styles';
@@ -15,8 +15,8 @@ export class Auth extends Component {
       user: null
     };
 
-    this.handleSignup = this.handleSignup.bind(this)
-    this.handleLogin = this.handleLogin.bind(this)
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleSignup() {
@@ -46,8 +46,8 @@ export class Auth extends Component {
     })
   }
 
+
 render() {
-  //console.log(this.state.user)
 return (
   // image used from http://
   <Image source={require('../assets/img/loginbkg.jpg')}

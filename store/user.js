@@ -52,13 +52,6 @@ export const createUser = user => dispatch => {
   .catch(err => console.warn('error creating user', err))
 }
 
-export const logout = () =>
-  dispatch =>
-    axios.post(`${serverUrl}/auth/logout`)
-      .then(_ => {
-        dispatch(removeUser());
-      })
-.catch(err => console.warn(err))
 
 export const updateUser = (userId, edits) => dispatch => {
   axios.put(`${serverUrl}/api/users/userId`, edits)
