@@ -1,22 +1,69 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { Image, View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import styles from './styles'
+import { ViroARSceneNavigator } from 'react-viro'
+import styles from "./styles";
+var FirstScene = require("./2DRacing");
 
-export default class Loser extends React.Component {
-  render() {
+export default class Winner extends React.Component {
+  constructor(){
+    super()
+
+    this.state = {
+      sharedProps: { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" },
+      type: 'loser'
+    }
+
+    this._getVideo = this._getVideo.bind(this)
+    this._showLoser = this._showLoser.bind(this)
+  }
+
+  _getVideo() {
     return (
-      <View style={styles.container}>
-        <Text>This is Loser Page</Text>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate("Profile")}
-        >
-          <Text>Go to Profile</Text>
-        </TouchableOpacity>
-
-      </View>
+      <ViroARSceneNavigator
+        { ...this.state.sharedProps}
+        initialScene={{ scene: FirstScene }}
+        viroAppProps={this.props.navigation}
+      />
     );
+  }
+
+  _showLoser() {
+    return (
+      <Image
+      source={require("../assets/loser.jpg")}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
+
+        <View>
+          <Text style={styles.raceTitle}>Fail!</Text>
+          <Text style={styles.raceMessage}>You Lost the Race.</Text>
+          <Text style={styles.raceMessage}>Try Again!</Text>
+        </View>
+
+        <View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate("Searching")}
+          >
+            <Text>Build a Car</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={ () => this.setState({type: 'video'})}
+          >
+            <Text>Race your car</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Image>
+    )
+  }
+
+  render() {
+    if(this.state.type === 'loser') return this._showLoser()
+    else if(this.state.type === 'video') return this._getVideo()
   }
 }

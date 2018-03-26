@@ -93,13 +93,13 @@ import {StyleSheet} from 'react-native';
     color: 'rgba(228,15,15,1)'
   },
   btnText: {
-    fontSize: 20, 
+    fontSize: 20,
     color: '#000000',
     fontFamily: 'PaytoneOne-Regular'
   },
   title: {
-    fontSize: 30, 
-    color: '#ffffff', 
+    fontSize: 30,
+    color: '#ffffff',
     top: 100,
 // =======
 //     fontSize: 20,
@@ -137,6 +137,18 @@ import {StyleSheet} from 'react-native';
     color: '#ffffff',
     fontWeight: 'bold',
     top: 90,
+    textAlign: 'center'
+  },
+  raceMessage: {
+    fontSize: 20,
+    top: 120,
+    margin: 10,
+    textAlign: 'center'
+  },
+  raceTitle: {
+    fontSize: 25,
+    margin: 10,
+    top: 120,
     textAlign: 'center'
   }
 })
