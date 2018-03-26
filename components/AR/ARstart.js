@@ -11,17 +11,14 @@ import { StackNavigator } from "react-navigation";
 // we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
 import { connect } from 'react-redux'
-import { fetchCurrentInventory } from '../../store'
+import { fetchCurrentInventory, fetchTypes, updateInventory } from '../../store'
 
-import { connect } from 'react-redux';
-import { updateInventory } from '../../store'
 
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
 
 class Searching extends Component {
-// export class Searching extends Component {
   constructor() {
     super();
 
@@ -38,12 +35,10 @@ class Searching extends Component {
     this._exitViro = this._exitViro.bind(this);
   }
 
-  // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
-  // if you are building a specific type of experience.
- // componentDidMount() {
- //    this.props.fetchCurrentInventory(this.props.user.id)
- //  }
-
+ componentDidMount() {
+    this.props.fetchCurrentInventory(this.props.user.id);
+    this.props.fetchTypes();
+  }
 
   render() {
     if (this.state.navigatorType == UNSET) {
@@ -87,13 +82,14 @@ class Searching extends Component {
   _getARNavigator() {
     let sceneProps = {
       navigation: this.props.navigation,
-      inventory: this.props.currentInventory
+      inventory: this.props.currentInventory,
+      types: this.props.allTypes
     }
     return (
       <ViroARSceneNavigator
         {...this.state.sharedProps}
         initialScene={{ scene: require("./ARrender") }}
-        viroAppProps={sceneProps}
+        viroAppProps={ sceneProps }
       />
     );
   }
@@ -115,7 +111,7 @@ class Searching extends Component {
 }
 
 const mapState = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
-const mapDispatch = { updateInventory }
+const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory }
 
 export default connect(mapState, mapDispatch)(Searching)
 

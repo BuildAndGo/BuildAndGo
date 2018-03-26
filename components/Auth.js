@@ -5,9 +5,6 @@ import { createUser, fetchUser } from '../store';
 import { StackNavigator } from 'react-navigation';
 import styles from './styles';
 
-
-
-
 export class Auth extends Component {
   constructor(props) {
     super(props);
@@ -47,29 +44,29 @@ export class Auth extends Component {
   render() {
 return (
   // image used from http://
-  <Image source={require('../assets/img/loginbkg.jpg')} 
+  <Image source={require('../assets/img/loginbkg.jpg')}
   style={styles.backgroundImage}>
    <Text style={styles.title}>Build and Go!</Text>
       <View style={styles.container}>
         <View style={styles.containerInput}>
-        <TextInput
-          // containerStyle={styles.containerInput}
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#000000"
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ email: text })}
-        />
-        <TextInput
-          // containerStyle={styles.containerInput}
-          style={styles.input}
-          secureTextEntry
-          placeholder="Password"
-          placeholderTextColor= "#000000"
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ password: text })}
-        />
-          </View>
+          <TextInput
+            // containerStyle={styles.containerInput}
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#000000"
+            autoCapitalize="none"
+            onChangeText={text => this.setState({ email: text })}
+          />
+          <TextInput
+            // containerStyle={styles.containerInput}
+            style={styles.input}
+            secureTextEntry
+            placeholder="Password"
+            placeholderTextColor= "#000000"
+            autoCapitalize="none"
+            onChangeText={text => this.setState({ password: text })}
+          />
+        </View>
         {this.state.message ? (
           <Text style={styles.message}>{this.state.message}</Text>
         ) : null}
