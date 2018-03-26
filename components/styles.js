@@ -126,20 +126,10 @@ import {StyleSheet} from 'react-native';
     color: '#000000',
     fontFamily: 'PaytoneOne-Regular'
   },
-  title: {
-    fontSize: 30,
-    color: '#ffffff',
-    top: 100,
-// =======
-//     fontSize: 20,
-//     color: '#000000',
-//     fontWeight: 'bold'
-//   },
-//   title: {
-//     fontSize: 20,
-//     color: '#ffffff',
-//     top: 120,
-// >>>>>>> master
+   title: {
+     fontSize: 20,
+     color: '#ffffff',
+     top: 120,
     textAlign: 'center',
     fontFamily: 'fasterone_regular'
   },
@@ -162,10 +152,9 @@ import {StyleSheet} from 'react-native';
     fontWeight: 'bold',
   },
   titleProfile: {
-//instructions
     fontSize: 20,
     color: '#ffffff',
-    top: 70,
+    top: 80,
     textAlign: 'center',
     fontFamily: 'PaytoneOne-Regular'
   },
