@@ -33,7 +33,7 @@ import {StyleSheet} from 'react-native';
   instructionsGo: {
     color: '#ffffff',
     fontFamily: 'fasterone_regular',
-    fontSize: 20, 
+    fontSize: 20,
   },
   button: {
     alignItems: 'center',
@@ -162,10 +162,10 @@ import {StyleSheet} from 'react-native';
     fontWeight: 'bold',
   },
   titleProfile: {
-instructions
-    fontSize: 20, 
-    color: '#ffffff', 
-    top: 80,
+//instructions
+    fontSize: 20,
+    color: '#ffffff',
+    top: 70,
     textAlign: 'center',
     fontFamily: 'PaytoneOne-Regular'
   },
