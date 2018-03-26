@@ -1,7 +1,7 @@
 // StackNavigator helps navigating components and we will use
 import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-
+import { BackHandler } from 'react-native';
 // List of Component
 import Auth from './Auth'
 import Profile from './Profile'
