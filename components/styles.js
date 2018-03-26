@@ -18,6 +18,23 @@ import {StyleSheet} from 'react-native';
     padding: 150,
     backgroundColor: 'rgba(0,0,0, .8)'
   },
+  instructionsContainer: {
+    backgroundColor: 'rgba(0,0,0, .8)',
+    top: -40,
+    padding: 20,
+    alignItems: 'center',
+  },
+  instructions: {
+    color: '#ffffff',
+    fontFamily: 'PaytoneOne-Regular',
+    padding: 20,
+    top: -20
+  },
+  instructionsGo: {
+    color: '#ffffff',
+    fontFamily: 'fasterone_regular',
+    fontSize: 20, 
+  },
   button: {
     alignItems: 'center',
     backgroundColor: 'rgba(255,255,255, .85)',
@@ -112,7 +129,7 @@ import {StyleSheet} from 'react-native';
 //     top: 120,
 // >>>>>>> master
     textAlign: 'center',
-    fontFamily: 'FasterOne-Regular'
+    fontFamily: 'fasterone_regular'
   },
   inventoryTitle: {
     fontSize: 20,
@@ -133,11 +150,12 @@ import {StyleSheet} from 'react-native';
     fontWeight: 'bold',
   },
   titleProfile: {
-    fontSize: 20,
-    color: '#ffffff',
-    fontWeight: 'bold',
-    top: 90,
-    textAlign: 'center'
+instructions
+    fontSize: 20, 
+    color: '#ffffff', 
+    top: 80,
+    textAlign: 'center',
+    fontFamily: 'PaytoneOne-Regular'
   },
   raceMessage: {
     fontSize: 20,
@@ -151,7 +169,7 @@ import {StyleSheet} from 'react-native';
     top: 120,
     textAlign: 'center'
   }
-})
+});
 
 export default styles;
 
