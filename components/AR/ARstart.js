@@ -11,13 +11,14 @@ import { StackNavigator } from "react-navigation";
 // we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
 import { connect } from 'react-redux'
-import { fetchCurrentInventory } from '../../store'
+import { fetchCurrentInventory, fetchTypes, updateInventory } from '../../store'
+
 
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
 
-export class Searching extends Component {
+class Searching extends Component {
   constructor() {
     super();
 
@@ -34,10 +35,10 @@ export class Searching extends Component {
     this._exitViro = this._exitViro.bind(this);
   }
 
- // componentDidMount() {
- //    this.props.fetchCurrentInventory(this.props.user.id)
- //  }
-
+ componentDidMount() {
+    this.props.fetchCurrentInventory(this.props.user.id);
+    this.props.fetchTypes();
+  }
 
   render() {
     if (this.state.navigatorType == UNSET) {
@@ -79,19 +80,17 @@ export class Searching extends Component {
 
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
-
+    let sceneProps = {
+      navigation: this.props.navigation,
+      inventory: this.props.currentInventory,
+      types: this.props.allTypes
+    }
     return (
-
-
-
-        <ViroARSceneNavigator
-          {...this.state.sharedProps}
-          initialScene={{ scene: require("./ARrender") }}
-          viroAppProps={this.props.navigation}
-
-        />
-
-
+      <ViroARSceneNavigator
+        {...this.state.sharedProps}
+        initialScene={{ scene: require("./ARrender") }}
+        viroAppProps={ sceneProps }
+      />
     );
   }
 
@@ -111,13 +110,17 @@ export class Searching extends Component {
   }
 }
 
-
-module.exports = Searching
-
-const mapState = ({user, currentInventory}) => ({user, currentInventory})
-const mapDispatch = {fetchCurrentInventory}
+const mapState = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
+const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory }
 
 export default connect(mapState, mapDispatch)(Searching)
+
+// module.exports = Searching
+
+// const mapState = ({user, currentInventory}) => ({user, currentInventory})
+// const mapDispatch = {fetchCurrentInventory}
+
+// export default connect(mapState, mapDispatch)(Searching)
 
 var localStyles = StyleSheet.create({
   viroContainer: {

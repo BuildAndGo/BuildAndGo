@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { createUser, fetchUser } from '../store';
 import styles from './styles';
 
-
 export class Auth extends Component {
   constructor(props) {
     super(props);

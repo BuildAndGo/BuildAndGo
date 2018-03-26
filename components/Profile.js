@@ -3,11 +3,13 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from "./styles";
 import { connect } from 'react-redux'
-import { fetchCurrentInventory } from '../store'
+import { fetchTypes } from '../store'
 
 
 class Profile extends React.Component {
-
+  componentDidMount() {
+    this.props.fetchTypes();
+  }
   render() {
     let email = this.props.user.email
     return (
@@ -47,6 +49,7 @@ class Profile extends React.Component {
 }
 
 const mapState  = ({ user }) => ({ user })
+const mapDispatch = { fetchTypes }
 
-export default connect(mapState)(Profile);
+export default connect(mapState, mapDispatch)(Profile);
 
