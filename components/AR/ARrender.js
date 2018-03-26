@@ -37,7 +37,7 @@ class ARrender extends Component {
 
 
   render() {
-      console.warn(this.props.inventory && this.props.inventory.length ? 'broccoli' + this.props.inventory : 'cats')
+      //console.warn(this.props.parts[0].x, this.props.parts[.y, this.props.parts.z)
     return (
        <ViroARScene>
 
