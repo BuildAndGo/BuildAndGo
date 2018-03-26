@@ -19,6 +19,11 @@ class ARrender extends Component {
     this.state = {
       lclInventory: [],
       // parts: [frame, red, tire, engine],
+      parts: [
+      {id: 1, type: frame, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 2, type: red, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 3, type: tire, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
+      {id: 4, type: engine, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6}],
       found: false
     };
 
@@ -37,6 +42,31 @@ class ARrender extends Component {
     return (
        <ViroARScene>
       { console.warn(this.props) }
+
+       {/* <Viro3DObject
+         source={require("../assets/tire.obj")}
+         resources={[require("../assets/tire.mtl")]}
+         position={[0.0, 0.0, -10]}
+         scale={[0.1, 0.1, 0.1]}
+         type="OBJ"
+       /> */}
+
+       {
+         this.state.parts && this.state.parts.map( part => {
+           return (
+             <ViroButton
+             key={part.id}
+             source={part.type}
+             position={[part.x, part.y, part.z]}
+             height={2}
+             width={3}
+             onClick={() => this._onClick(part.type)}
+             onDrag={() => {}}
+           />
+           )
+         })
+       }
+
        {
          this.state.lclInventory.length === 4 &&
          Alert.alert(

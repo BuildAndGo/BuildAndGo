@@ -10,6 +10,8 @@ import {
 import { StackNavigator } from "react-navigation";
 // we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
+import { connect } from 'react-redux'
+import { fetchCurrentInventory } from '../../store'
 
 import { connect } from 'react-redux';
 import { updateInventory } from '../../store'
@@ -19,6 +21,7 @@ var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
 
 class Searching extends Component {
+// export class Searching extends Component {
   constructor() {
     super();
 
@@ -37,6 +40,11 @@ class Searching extends Component {
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
+ // componentDidMount() {
+ //    this.props.fetchCurrentInventory(this.props.user.id)
+ //  }
+
+
   render() {
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
@@ -112,6 +120,11 @@ const mapDispatch = { updateInventory }
 export default connect(mapState, mapDispatch)(Searching)
 
 // module.exports = Searching
+
+// const mapState = ({user, currentInventory}) => ({user, currentInventory})
+// const mapDispatch = {fetchCurrentInventory}
+
+// export default connect(mapState, mapDispatch)(Searching)
 
 var localStyles = StyleSheet.create({
   viroContainer: {
