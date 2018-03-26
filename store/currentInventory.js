@@ -6,9 +6,9 @@ const GET_CURRENT_INVENTORY = 'GET_CURRENT_INVENTORY';
 const EDIT_INVENTORY = 'EDIT_INVENTORY'
 
 export const getCurrentInventory = inventory => ({ type: GET_CURRENT_INVENTORY, inventory });
-export const editInventory = inventory => ({type: EDIT_INVENTORY, inventory})
+export const editInventory = inventory => ({ type: EDIT_INVENTORY, inventory });
 
-export default (currentInventory = {}, action) => {
+export default (currentInventory = [], action) => {
   switch (action.type) {
     case GET_CURRENT_INVENTORY:
       return action.inventory;
@@ -19,7 +19,7 @@ export default (currentInventory = {}, action) => {
     default:
       return currentInventory;
   }
-}
+};
 
 export const fetchCurrentInventory = userId => dispatch => {
     axios.get(`${serverUrl}/api/users/${userId}/inventory`)
@@ -36,4 +36,4 @@ export const updateInventory = (userId, edits) => dispatch => {
   .then(res => res.data)
   .then(inventory => dispatch(editInventory(inventory)))
   .catch(err => console.error(`error updating inventory for: ${userId}`, err))
-}
+};
