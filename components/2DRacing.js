@@ -1,23 +1,55 @@
 import React from "react";
+import { Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ViroARScene, ViroVideo } from "react-viro";
 
 export default class Racing extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      video: true
+    };
+    this._randomResult = this._randomResult.bind(this);
+    this._resultAlert = this._resultAlert.bind(this);
+  }
+
+  _randomResult() {
+    var truthyOrFalsy = Math.floor(Math.random() * 2);
+    if (truthyOrFalsy)
+      return this.props.arSceneNavigator.viroAppProps.navigate("Winner");
+    else return this.props.arSceneNavigator.viroAppProps.navigate("Loser");
+  }
+
+  _resultAlert() {
+    Alert.alert(
+      "You finished the racing!",
+      "See the result",
+      [
+        { text: "cancel", style: "cancel" },
+        { text: "Who's Winner?", onPress: this._randomResult }
+      ],
+      { cancelable: false }
+    );
+  }
+
   render() {
     return (
       <ViroARScene>
-
-        <ViroVideo
-          source={require("../assets/racing.mp4")}
-          onFinish={() =>
-            this.props.arSceneNavigator.viroAppProps.navigate("Winner")
-          }
-          loop={true}
-          paused={false}
-          position={[0, 0, -5]}
-          scale={[2, 2, 0]}
-          volume={1.0}
-        />
+        {this.state.video &&
+          <ViroVideo
+            source={require("../assets/racing.mp4")}
+            onFinish={() => {
+              this._resultAlert();
+              return this.setState({ video: null });
+            }}
+            loop={true}
+            paused={false}
+            position={[0, 0, -5]}
+            scale={[2, 2, 0]}
+            volume={1.0}
+          />
+        }
       </ViroARScene>
     );
   }

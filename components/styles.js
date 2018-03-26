@@ -11,21 +11,25 @@ import {StyleSheet} from 'react-native';
 },
   container: {
     flex: 1,
-    justifyContent: 'center',
+    top: 150,
     alignItems: 'center',
+  },
+  inventoryContainer: {
+    padding: 150,
+    backgroundColor: 'rgba(0,0,0, .8)'
   },
   button: {
     alignItems: 'center',
     backgroundColor: 'rgba(255,255,255, .85)',
     padding: 10,
-    top: 400,
+    top: 200,
     position: 'absolute'
   },
   button2: {
     alignItems: 'center',
     backgroundColor: 'rgba(255,255,255, .85)',
     padding: 10,
-    top: 450,
+    top: 250,
     position: 'absolute'
   },
   button3: {
@@ -33,7 +37,7 @@ import {StyleSheet} from 'react-native';
     backgroundColor: '#FFFFFF',
     opacity: 0.5,
     padding: 10,
-    top: 500,
+    top: 300,
     position: 'absolute'
   },
   tagLine: {
@@ -47,8 +51,6 @@ import {StyleSheet} from 'react-native';
 
   text: {
     color: '#ffffff',
-    // fontFamily: 'Arial',
-    
   },
   containerInput: {
     width: '90%',
@@ -83,33 +85,50 @@ import {StyleSheet} from 'react-native';
     padding: 10
   },
   message: {
-    color: '#FF5252',
-    fontSize: 15,
+    fontSize: 25,
     fontWeight: 'bold',
-    padding: 20
+    padding: 20,
+    backgroundColor: 'rgba(255,255,255, .9)',
+    color: 'rgba(228,15,15,1)'
   },
   btnText: {
-    fontSize: 20, 
-    color: '#000000', 
+    fontSize: 20,
+    color: '#000000',
     fontWeight: 'bold'
   },
   title: {
-    fontSize: 20, 
-    color: '#ffffff', 
-    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#ffffff',
     top: 120,
     textAlign: 'center',
-    fontFamily: 'Faster One'
+    fontFamily: 'FasterOne-Regular'
+  },
+  inventoryTitle: {
+    fontSize: 20,
+    top: -70,
+    color: '#ffffff',
+    fontWeight: 'bold',
+  },
+   inventory: {
+    fontSize: 15,
+    color: '#ffffff',
+    top: -50,
+    fontWeight: 'bold',
+  },
+  stillNeededTitle: {
+    fontSize: 20,
+    top: -20,
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
   titleProfile: {
-    fontSize: 20, 
-    color: '#ffffff', 
+    fontSize: 20,
+    color: '#ffffff',
     fontWeight: 'bold',
     top: 90,
-    textAlign: 'center',
-    fontFamily: 'Faster One'
+    textAlign: 'center'
   }
 })
 
-export default styles
+export default styles;
 
