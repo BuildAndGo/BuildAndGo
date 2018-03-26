@@ -87,19 +87,19 @@ import {StyleSheet} from 'react-native';
   },
   message: {
     fontSize: 25,
-    fontWeight: 'bold',
     padding: 20,
     backgroundColor: 'rgba(255,255,255, .9)',
-    color: 'rgba(228,15,15,1)'
+    color: 'rgba(228,15,15,1)',
+    fontFamily: 'PaytoneOne-Regular'
   },
   btnText: {
-    fontSize: 20, 
+    fontSize: 20,
     color: '#000000',
     fontFamily: 'PaytoneOne-Regular'
   },
   title: {
-    fontSize: 30, 
-    color: '#ffffff', 
+    fontSize: 30,
+    color: '#ffffff',
     top: 100,
 // =======
 //     fontSize: 20,
