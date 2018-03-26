@@ -61,7 +61,7 @@ return (
           placeholder="Email"
           placeholderTextColor="#000000"
           autoCapitalize="none"
-          onChangeText={text => this.setState({ email: text })}
+          onChangeText={text => this.setState({ email: text.trim() })}
         />
         <TextInput
           style={styles.input}
