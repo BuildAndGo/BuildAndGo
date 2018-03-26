@@ -51,7 +51,7 @@ import {StyleSheet} from 'react-native';
 
   text: {
     color: '#ffffff',
-    // fontFamily: 'Arial',
+    fontFamily: 'PaytoneOne-Regular'
     
   },
   containerInput: {
@@ -94,13 +94,13 @@ import {StyleSheet} from 'react-native';
   },
   btnText: {
     fontSize: 20, 
-    color: '#000000', 
-    fontWeight: 'bold'
+    color: '#000000',
+    fontFamily: 'PaytoneOne-Regular'
   },
   title: {
-    fontSize: 20, 
+    fontSize: 30, 
     color: '#ffffff', 
-    top: 120,
+    top: 100,
     textAlign: 'center',
     fontFamily: 'FasterOne-Regular'
   },
