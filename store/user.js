@@ -33,7 +33,7 @@ export default function (user = {}, action) {
 }
 
 export const fetchUser = (user) => dispatch => {
- axios.post(`${serverUrl}/auth/login`, user)
+ return axios.post(`${serverUrl}/auth/login`, user)
   .then(res => res.data)
   .then(userData => {
     dispatch(loginUser(userData))
