@@ -11,7 +11,8 @@ import { StackNavigator } from "react-navigation";
 // we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
 import { connect } from 'react-redux'
-import { fetchCurrentInventory, fetchTypes, updateInventory } from '../../store'
+import { fetchCurrentInventory, fetchTypes, updateInventory, postToInventory } from '../../store'
+// import { fetchCurrentInventory, fetchTypes, updateInventory } from '../../store'
 
 
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
@@ -26,7 +27,7 @@ class Searching extends Component {
       navigatorType: UNSET,
       sharedProps: sharedProps
     };
-
+    this.updateInventory = this.updateInventory.bind(this);
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(
@@ -38,6 +39,15 @@ class Searching extends Component {
  componentDidMount() {
     this.props.fetchCurrentInventory(this.props.user.id);
     this.props.fetchTypes();
+  }
+
+  updateInventory(part, replace) {
+    if (replace) {
+      this.props.updateInventory(this.props.user.id, part);
+    }
+    else {
+      this.props.postToInventory(this.props.user.id, part);
+    }
   }
 
   render() {
@@ -83,7 +93,8 @@ class Searching extends Component {
     let sceneProps = {
       navigation: this.props.navigation,
       inventory: this.props.currentInventory,
-      types: this.props.allTypes
+      types: this.props.allTypes,
+      updateInventory: this.updateInventory
     }
     return (
       <ViroARSceneNavigator
@@ -111,7 +122,8 @@ class Searching extends Component {
 }
 
 const mapState = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
-const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory }
+const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory, postToInventory }
+// const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory }
 
 export default connect(mapState, mapDispatch)(Searching)
 

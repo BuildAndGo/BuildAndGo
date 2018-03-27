@@ -5,7 +5,6 @@ import { StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import axios from 'axios';
 import { ViroARScene, ViroVideo, ViroButton, ViroSceneNavigator } from "react-viro";
 import { Provider, connect } from 'react-redux';
-// import { updateInventory } from '../../store'
 
 // let tire = require('../../assets/tire.png')
 // let red = require('../../assets/red.png')
@@ -14,46 +13,54 @@ import { Provider, connect } from 'react-redux';
 
 import { StackNavigator } from "react-navigation";
 
-
-
 class ARrender extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       lclInventory: [],
       video: null,
       stopAlert: null,
-
-      // parts: [frame, red, tire, engine],
-      // parts: [
-      // {id: 1, type: frame, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
-      // {id: 2, type: red, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
-      // {id: 3, type: tire, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6},
-      // {id: 4, type: engine, x: Math.random() * 10 - 5, y: -0.5, z: Math.random() * -12 + 6}],
-      parts: [],
-      found: false
+      inventory: props.arSceneNavigator.viroAppProps.inventory,
+      newPart: {},
+      found: false,
+      isDuplicate: false,
     };
 
     this._onClick = this._onClick.bind(this);
     this._randomResult = this._randomResult.bind(this)
     this._resultAlert = this._resultAlert.bind(this)
+    this.handleDuplicate = this.handleDuplicate.bind(this);
   }
 
-  componentDidMount() {
-    // axios.get('https://build-and-go.herokuapp.com/api/types')
-    // .then(res => this.setState({ parts: res.data }));
+  _onClick(newPart) {
+    // this.setState({ newPart: newPart });
+    if (!this.state.inventory.find(part => part.typeId === newPart.typeId)) {
+      let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
+      updateInventory(newPart, false);
+      this.setState({
+        inventory: [...this.state.inventory, newPart],
+        newPart: {}
+      });
+    }
+    else if (this.state.inventory.find(part => part.typeId === newPart.typeId && part.id !== newPart.id)) {
+      this.setState({
+        isDuplicate: true,
+        newPart: newPart
+      });
+    }
+    // this.setState()
   }
 
-  _onClick(part) {
-    axios.put(`${serverUrl}/api/users/${userId}/inventory`, edits)
-  .then(res => res.data)
-  .then(inventory => dispatch(editInventory(inventory)))
-  .catch(err => console.error(`error updating inventory for: ${userId}`, err))
-    // let array = this.state.parts;
-    // let out = array.splice(array.indexOf(part), 1)
-    // this.setState({ parts: array, lclInventory: [...this.state.lclInventory, out] })
-    // updateInventory(this.props.user.id, this.lclInventory)
+  handleDuplicate(part, replace) {
+    let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
+    if (replace) {
+      updateInventory(part, true);
+    }
+    this.setState({
+      newPart: {},
+      isDuplicate: false
+    })
   }
 
   _randomResult() {
@@ -76,12 +83,11 @@ class ARrender extends Component {
   }
 
   render() {
-      // console.warn(this.props.currentInventory && this.props.currentInventory.length ? 'broccoli' + this.props.currentInventory : 'cats')
     let { types, inventory } = this.props.arSceneNavigator.viroAppProps;
 
     return (
        <ViroARScene>
-      { console.warn(types[0].image) }
+      { console.warn(this.state.inventory.length) }
 
        {
          types && types.map(type => {
@@ -96,7 +102,7 @@ class ARrender extends Component {
              position={[part.x, part.y, part.z]}
              height={2}
              width={3}
-             onClick={() => this._onClick(part.type)}
+             onClick={() => this._onClick(part)}
              onDrag={() => {}}
            />
            )
@@ -104,7 +110,19 @@ class ARrender extends Component {
        }
 
        {
-         this.state.lclInventory.length === 2 &&
+         this.state.isDuplicate && Object.keys(this.state.newPart).length &&
+         Alert.alert(
+          `Do you want to replace your current ${this.state.newPart.type.name} with ${this.state.newPart.name}?`,
+          [
+            {text: 'No', style: 'cancel', onPress: () => this.handleDuplicate(this.start.newPart, false)},
+            {text: 'Yes', onPress: () => this.handleDuplicate(this.state.newPart, true) },
+          ],
+          { cancelable: false }
+        )
+       }
+
+       {
+         this.state.inventory.length === types.length &&
          this.state.stopAlert === null &&
          Alert.alert(
           'You collected all parts for your car!',
@@ -124,7 +142,7 @@ class ARrender extends Component {
          source={require("../../assets/racing.mp4")}
          onFinish={ () => {
                   this._resultAlert()
-            return this.setState({video: null})
+            return this.setState({ video: null })
         }}
          loop={true}
          paused={false}
@@ -138,10 +156,5 @@ class ARrender extends Component {
     );
   }
 }
-
-// const mapState = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
-// const mapDispatch = { updateInventory }
-
-// export default connect(mapState, mapDispatch)(ARrender)
 
 module.exports = ARrender
