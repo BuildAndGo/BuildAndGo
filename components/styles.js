@@ -18,6 +18,23 @@ import {StyleSheet} from 'react-native';
     padding: 150,
     backgroundColor: 'rgba(0,0,0, .8)'
   },
+  instructionsContainer: {
+    backgroundColor: 'rgba(0,0,0, .8)',
+    top: -40,
+    padding: 20,
+    alignItems: 'center',
+  },
+  instructions: {
+    color: '#ffffff',
+    fontFamily: 'PaytoneOne-Regular',
+    padding: 20,
+    top: -20
+  },
+  instructionsGo: {
+    color: '#ffffff',
+    fontFamily: 'fasterone_regular',
+    fontSize: 20,
+  },
   button: {
     alignItems: 'center',
     backgroundColor: 'rgba(255,255,255, .85)',
@@ -39,6 +56,18 @@ import {StyleSheet} from 'react-native';
     padding: 10,
     top: 300,
     position: 'absolute'
+  },
+  logout: {
+   top: 5,
+   right: 5,
+    backgroundColor: 'rgba(255,255,255, .9)',
+    padding: 5,
+    position: 'absolute'
+  },
+  logoutTxt: {
+    fontSize: 12,
+    color: '#000000',
+    fontFamily: 'PaytoneOne-Regular'
   },
   tagLine: {
     alignItems: 'center',
@@ -87,32 +116,22 @@ import {StyleSheet} from 'react-native';
   },
   message: {
     fontSize: 25,
-    fontWeight: 'bold',
     padding: 20,
     backgroundColor: 'rgba(255,255,255, .9)',
-    color: 'rgba(228,15,15,1)'
+    color: 'rgba(228,15,15,1)',
+    fontFamily: 'PaytoneOne-Regular'
   },
   btnText: {
-    fontSize: 20, 
+    fontSize: 20,
     color: '#000000',
     fontFamily: 'PaytoneOne-Regular'
   },
-  title: {
-    fontSize: 30, 
-    color: '#ffffff', 
-    top: 100,
-// =======
-//     fontSize: 20,
-//     color: '#000000',
-//     fontWeight: 'bold'
-//   },
-//   title: {
-//     fontSize: 20,
-//     color: '#ffffff',
-//     top: 120,
-// >>>>>>> master
+   title: {
+     fontSize: 20,
+     color: '#ffffff',
+     top: 120,
     textAlign: 'center',
-    fontFamily: 'FasterOne-Regular'
+    fontFamily: 'fasterone_regular'
   },
   inventoryTitle: {
     fontSize: 20,
@@ -135,11 +154,23 @@ import {StyleSheet} from 'react-native';
   titleProfile: {
     fontSize: 20,
     color: '#ffffff',
-    fontWeight: 'bold',
-    top: 90,
+    top: 80,
+    textAlign: 'center',
+    fontFamily: 'PaytoneOne-Regular'
+  },
+  raceMessage: {
+    fontSize: 20,
+    top: 120,
+    margin: 10,
+    textAlign: 'center'
+  },
+  raceTitle: {
+    fontSize: 25,
+    margin: 10,
+    top: 120,
     textAlign: 'center'
   }
-})
+});
 
 export default styles;
 
