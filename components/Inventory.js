@@ -3,18 +3,19 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles';
 import { connect } from 'react-redux';
-import { fetchCurrentInventory, fetchTypes } from '../store';
+import { fetchTypes } from '../store';
 
 
 export class Inventory extends React.Component {
+
  componentDidMount() {
-    this.props.fetchCurrentInventory(this.props.user.id),
+
     this.props.fetchTypes()
   }
 
   render() {
-    const inventory = this.props.currentInventory;
-    console.log("props", this.props);
+    const inventory = this.props.user.parts;
+    const types = this.props.allTypes[0];
     return (
       <Image source={require('../assets/img/loginbkg.jpg')} 
       style={styles.backgroundImage}>
@@ -40,8 +41,8 @@ export class Inventory extends React.Component {
   }
 }
 
-const mapState  = ({ user, currentInventory, fetchTypes }) => ({ user, currentInventory, fetchTypes })
+const mapState  = ({ user, fetchTypes }) => ({ user, fetchTypes })
 
-export const mapDispatch = { fetchCurrentInventory, fetchTypes }
+export const mapDispatch = { fetchTypes }
 
 export default connect(mapState, mapDispatch)(Inventory)
