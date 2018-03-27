@@ -1,5 +1,7 @@
+'use strict';
+
 import React, { Component } from 'react';
-import { View, TouchableHighlight, TextInput, Text, Image} from 'react-native';
+import { View, TouchableHighlight, TextInput, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { createUser, fetchUser } from '../store';
 import styles from './styles';
@@ -23,7 +25,7 @@ export class Auth extends Component {
     this.setState({ message: '' });
     const { email, password } = this.state
     if ( !this.state.email || !this.state.password) {
-      this.setState({ message: 'All fields required!' });
+      this.setState({ message: 'All fields required' });
     } else {
       this.setState({ message: '' })
       this.props.createUser({ email, password });

@@ -69,11 +69,17 @@ class Searching extends Component {
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={"#68a0ff"}
+            underlayColor={"#ffffff"}
           >
             <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
-
+          <TouchableHighlight
+            style={localStyles.buttons}
+            onPress={()=>this.props.navigation.navigate('Profile')}
+            underlayColor={"#ffffff"}
+          >
+            <Text style={localStyles.buttonText}>Profile</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -145,14 +151,16 @@ var localStyles = StyleSheet.create({
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
-    color: "#fff",
+    color: "#ffffff",
     textAlign: "center",
-    fontSize: 25
+    fontSize: 30,
+    fontFamily: 'fasterone_regular'
   },
   buttonText: {
-    color: "#fff",
+    color: "#000000",
     textAlign: "center",
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: 'PaytoneOne-Regular'
   },
   buttons: {
     height: 80,
@@ -161,10 +169,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: 'rgba(255,255,255, .9)',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff"
+    borderColor: "#ffffff"
   },
   exitButton: {
     height: 50,
@@ -173,9 +181,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: "#000000",
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff"
+    borderColor: "#ffffff",
+    fontFamily: 'PaytoneOne-Regular'
   }
 });

@@ -59,8 +59,8 @@ class ARrender extends Component {
 
   _randomResult() {
     var truthyOrFalsy = Math.floor((Math.random() * 2));
-    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Winner")
-    else return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Loser")
+    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigate("Winner")
+    else return this.props.arSceneNavigator.viroAppProps.navigate("Loser")
   }
 
   _resultAlert(){
@@ -81,6 +81,7 @@ class ARrender extends Component {
 
     return (
        <ViroARScene>
+      { console.warn(this.state.inventory.length) }
 
        {
          types && types.map(type => {
@@ -140,7 +141,7 @@ class ARrender extends Component {
                   this._resultAlert()
             return this.setState({ video: null })
         }}
-         loop={false}
+         loop={true}
          paused={false}
          position={[0, 0, -5]}
          scale={[2, 2, 0]}
