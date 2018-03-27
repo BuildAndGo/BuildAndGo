@@ -6,11 +6,6 @@ import axios from 'axios';
 import { ViroARScene, ViroVideo, ViroButton, ViroSceneNavigator } from "react-viro";
 import { Provider, connect } from 'react-redux';
 
-// let tire = require('../../assets/tire.png')
-// let red = require('../../assets/red.png')
-// let frame = require('../../assets/frame.png')
-// let engine = require('../../assets/engine.png')
-
 import { StackNavigator } from "react-navigation";
 
 class ARrender extends Component {
@@ -18,10 +13,10 @@ class ARrender extends Component {
     super(props);
 
     this.state = {
-      lclInventory: [],
       video: null,
       stopAlert: null,
       inventory: props.arSceneNavigator.viroAppProps.inventory,
+      availableParts: [],
       newPart: {},
       found: false,
       isDuplicate: false,
@@ -34,12 +29,11 @@ class ARrender extends Component {
   }
 
   _onClick(newPart) {
-    // this.setState({ newPart: newPart });
     if (!this.state.inventory.find(part => part.typeId === newPart.typeId)) {
       let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
       updateInventory(newPart, false);
       this.setState({
-        inventory: [...this.state.inventory, newPart],
+        inventory: this.state.inventory.concat(newPart),
         newPart: {}
       });
     }
@@ -102,7 +96,10 @@ class ARrender extends Component {
              position={[part.x, part.y, part.z]}
              height={2}
              width={3}
-             onClick={() => this._onClick(part)}
+             onClick={() => {
+               this._onClick(part);
+              //  this.visible = false;
+              } }
              onDrag={() => {}}
            />
            )

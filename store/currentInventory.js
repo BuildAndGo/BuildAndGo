@@ -43,6 +43,6 @@ export const updateInventory = (userId, edits) => dispatch => {
 export const postToInventory = (userId, newPart) => dispatch => {
   axios.post(`${serverUrl}/api/users/${userId}/inventory`, newPart)
   .then(res => res.data)
-  .then(newPart => dispatch(addToInventory(newPart[0])))
+  .then(newPart => dispatch(addToInventory(newPart)))
   .catch(err => console.error(`error updating inventory for: ${userId}`, err))
 }

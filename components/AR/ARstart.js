@@ -86,8 +86,6 @@ class Searching extends Component {
     );
   }
 
-
-
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     let sceneProps = {
