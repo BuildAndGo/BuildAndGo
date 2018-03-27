@@ -44,10 +44,7 @@ To run the app on your phone, complete the following steps:
 
 ## Team
 @anacsanchez
-
 @edanielleh
-
 @eunjisong
-
 @snwooten
 
