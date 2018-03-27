@@ -2,10 +2,19 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
 import { connect } from 'react-redux'
-import { fetchTypes } from '../store'
+import { fetchTypes, logout } from '../store'
 
 
 class Profile extends React.Component {
+  constructor() {
+    super();
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+  handleLogout() {
+    this.props.logout();
+    this.props.navigation.navigate('Auth')
+  }
+
   componentDidMount() {
     this.props.fetchTypes();
   }
@@ -18,7 +27,7 @@ class Profile extends React.Component {
       style={styles.backgroundImage}>
       <TouchableOpacity
           style={styles.logout}
-          onPress={() => this.props.navigation.navigate('Auth')}>
+          onPress={this.handleLogout}>
           <Text style={styles.logoutTxt}>Log Out</Text>
       </TouchableOpacity>
 
@@ -56,7 +65,7 @@ class Profile extends React.Component {
 }
 
 const mapState  = ({ user }) => ({ user })
-const mapDispatch = { fetchTypes }
+const mapDispatch = { fetchTypes, logout }
 
 export default connect(mapState, mapDispatch)(Profile);
 
