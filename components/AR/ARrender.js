@@ -43,7 +43,6 @@ class ARrender extends Component {
         newPart: newPart
       });
     }
-    // this.setState()
   }
 
   handleDuplicate(part, replace) {
@@ -98,7 +97,6 @@ class ARrender extends Component {
              width={3}
              onClick={() => {
                this._onClick(part);
-              //  this.visible = false;
               } }
              onDrag={() => {}}
            />
