@@ -141,7 +141,7 @@ class ARrender extends Component {
                   this._resultAlert()
             return this.setState({ video: null })
         }}
-         loop={true}
+         loop={false}
          paused={false}
          position={[0, 0, -5]}
          scale={[2, 2, 0]}
