@@ -15,7 +15,7 @@ import {StyleSheet} from 'react-native';
     alignItems: 'center',
   },
   inventoryContainer: {
-    padding: 150,
+    padding: 100,
     backgroundColor: 'rgba(0,0,0, .8)'
   },
   instructionsContainer: {
@@ -137,19 +137,24 @@ import {StyleSheet} from 'react-native';
     fontSize: 20,
     top: -70,
     color: '#ffffff',
-    fontWeight: 'bold',
+    fontFamily: 'PaytoneOne-Regular'
   },
    inventory: {
     fontSize: 15,
     color: '#ffffff',
     top: -50,
-    fontWeight: 'bold',
+    fontFamily: 'PaytoneOne-Regular'
+  },
+    need: {
+    fontSize: 15,
+    color: '#ffffff',
+    fontFamily: 'PaytoneOne-Regular'
   },
   stillNeededTitle: {
     fontSize: 20,
     top: -20,
     color: '#ffffff',
-    fontWeight: 'bold',
+    fontFamily: 'PaytoneOne-Regular'
   },
   titleProfile: {
     fontSize: 20,
