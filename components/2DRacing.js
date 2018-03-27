@@ -23,11 +23,11 @@ export default class Racing extends React.Component {
 
   _resultAlert() {
     Alert.alert(
-      "You finished the racing!",
-      "See the result",
+      'Race Complete!',
+      'View the result!',
       [
         { text: "cancel", style: "cancel" },
-        { text: "Who's Winner?", onPress: this._randomResult }
+        { text: "Who Won?", onPress: this._randomResult }
       ],
       { cancelable: false }
     );
@@ -43,7 +43,7 @@ export default class Racing extends React.Component {
               this._resultAlert();
               return this.setState({ video: null });
             }}
-            loop={true}
+            loop={false}
             paused={false}
             position={[0, 0, -5]}
             scale={[2, 2, 0]}

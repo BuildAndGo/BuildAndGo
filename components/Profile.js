@@ -34,8 +34,8 @@ class Profile extends React.Component {
        {this.props.user && this.props.user.email ? <Text style={styles.titleProfile}>Welcome To Build And Go, {this.props.user.email.substr(0, email.indexOf('@'))}!</Text> : <Text>...</Text>}
        <View style={styles.container}>
       <View style = {styles.instructionsContainer}>
-          <Text style= {styles.instructions}>Hit "Start Searching" to find car parts {"\n \n"}Hit "View Inventory" to see the parts you've already found
-          {"\n"}{"\n"}Once you build your car, race others by hitting "Start Racing"!</Text>
+          <Text style= {styles.instructions}>Hit "Start Searching" to find car parts {'\n \n'}Hit "View Inventory" to see the parts you've already found
+          {'\n'}{'\n'}Once you build your car, race others by hitting "Start Racing"!</Text>
           <Text style = {styles.instructionsGo}> 1..2..3..Go!</Text>
           </View>
         <TouchableOpacity
