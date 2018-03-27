@@ -8,30 +8,26 @@ class Profile extends React.Component {
   constructor() {
     super();
 
-    this.handleLogout = this.handleLogout.bind(this);
-    this._racingAlert = this._racingAlert.bind(this);
-
+    this.handleLogout = this.handleLogout.bind(this)
+    this._racingAlert = this._racingAlert.bind(this)
   }
+
   handleLogout() {
     this.props.logout();
-    this.props.navigation.navigate("Auth");
+    this.props.navigation.navigate("Auth")
   }
 
   componentDidMount() {
     this.props.fetchTypes();
   }
 
-  _racingAlert(){
-
+  _racingAlert() {
     Alert.alert(
       "You haven't built a car",
-      'Start collecting parts for your car',
-      [
-        { text: "Go Back", style: "cancel" },
-      ],
+      "Start collecting parts for your car",
+      [{ text: "Go Back", style: "cancel" }],
       { cancelable: false }
     );
-
   }
 
   render() {
@@ -86,10 +82,7 @@ class Profile extends React.Component {
             <Text style={styles.btnText}>View Inventory</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.button3}
-            onPress={ this._racingAlert  }
-          >
+          <TouchableOpacity style={styles.button3} onPress={this._racingAlert}>
             <Text style={styles.btnText}>Start Racing</Text>
           </TouchableOpacity>
         </View>
