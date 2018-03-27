@@ -16,6 +16,7 @@ class ARrender extends Component {
       video: null,
       stopAlert: null,
       inventory: props.arSceneNavigator.viroAppProps.inventory,
+      types: [],
       availableParts: [],
       newPart: {},
       found: false,
@@ -28,22 +29,49 @@ class ARrender extends Component {
     this.handleDuplicate = this.handleDuplicate.bind(this);
   }
 
+  componentDidMount() {
+    const { types } = this.props.arSceneNavigator.viroAppProps;
+    this.setState({
+      types: types.map(type => {
+        let part = type.parts[0];
+        part['x'] = Math.random() * 10 - 5;
+        part['y'] = -0.5;
+        part['z'] = Math.random() * -12 + 6;
+        return ({
+          id: part.id,
+          type: part.typeId,
+          button: <ViroButton
+          key={part.id}
+          source={{uri: part.image}}
+          position={[part.x, part.y, part.z]}
+          height={2}
+          width={3}
+          onClick={() => this._onClick(part) }
+          onDrag={() => {}}
+        />
+        })
+      })
+    })
+  }
+
   _onClick(newPart) {
     if (!this.state.inventory.find(part => part.typeId === newPart.typeId)) {
       let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
       updateInventory(newPart, false);
       this.setState({
         inventory: this.state.inventory.concat(newPart),
-        newPart: {}
+        newPart: {},
       });
     }
-    else if (this.state.inventory.find(part => part.typeId === newPart.typeId && part.id !== newPart.id)) {
+    else if ( this.state.inventory.findIndex(part => (part.typeId === newPart.typeId) && (part.id !== newPart.id)) !== -1 ) {
       this.setState({
         isDuplicate: true,
-        newPart: newPart
+        newPart: newPart,
       });
     }
-    // this.setState()
+    this.setState({
+      types: this.state.types.filter(part => part.id !== newPart.id)
+    })
   }
 
   handleDuplicate(part, replace) {
@@ -53,8 +81,10 @@ class ARrender extends Component {
     }
     this.setState({
       newPart: {},
-      isDuplicate: false
+      isDuplicate: false,
+      stopAlert: true
     })
+
   }
 
   _randomResult() {
@@ -77,49 +107,54 @@ class ARrender extends Component {
   }
 
   render() {
-    let { types, inventory } = this.props.arSceneNavigator.viroAppProps;
-
+    let { types, inventory } = this.state;
+    let allTypes = this.props.arSceneNavigator.viroAppProps.types;
     return (
        <ViroARScene>
-      { console.warn(this.state.inventory.length) }
+      {/* { this.state.inventory.length ? console.warn(this.state.inventory.length) : null} */}
+      { Object.keys(this.state.newPart).length ? console.warn(this.state.newPart.name) : null}
+       {
+        //  types && types.map(type => {
+        //    let part = type.parts[0];
+        //    part['x'] = Math.random() * 10 - 5;
+        //    part['y'] = -0.5;
+        //    part['z'] = Math.random() * -12 + 6;
+        //    return (
+        //       <ViroButton
+        //       key={part.id}
+        //       source={{uri: part.image}}
+        //       position={[part.x, part.y, part.z]}
+        //       height={2}
+        //       width={3}
+        //       onClick={() => {
+        //         this._onClick(part);
+        //         // this.visible = false;
+        //       }}
+        //      onDrag={() => {}}
+        //    />
+        //    )
+        //  })
+       }
+
+      {
+         this.state.types.map(part => part.button)
+      }
 
        {
-         types && types.map(type => {
-           let part = type.parts[0];
-           part['x'] = Math.random() * 10 - 5;
-           part['y'] = -0.5;
-           part['z'] = Math.random() * -12 + 6;
-           return (
-             <ViroButton
-             key={part.id}
-             source={{uri: part.image}}
-             position={[part.x, part.y, part.z]}
-             height={2}
-             width={3}
-             onClick={() => {
-               this._onClick(part);
-              //  this.visible = false;
-              } }
-             onDrag={() => {}}
-           />
-           )
-         })
+        //  this.state.isDuplicate &&
+        //  Alert.alert(
+        //   'Duplicate part found',
+        //   'Do you want to replace your current with?',
+        //   [
+        //     {text: 'No', style: 'cancel', onPress: () => this.handleDuplicate(this.state.newPart, false)},
+        //     {text: 'Yes', onPress: () => this.handleDuplicate(this.state.newPart, true) },
+        //   ],
+        //   { cancelable: false }
+        // )
        }
 
        {
-         this.state.isDuplicate && Object.keys(this.state.newPart).length &&
-         Alert.alert(
-          `Do you want to replace your current ${this.state.newPart.type.name} with ${this.state.newPart.name}?`,
-          [
-            {text: 'No', style: 'cancel', onPress: () => this.handleDuplicate(this.start.newPart, false)},
-            {text: 'Yes', onPress: () => this.handleDuplicate(this.state.newPart, true) },
-          ],
-          { cancelable: false }
-        )
-       }
-
-       {
-         this.state.inventory.length === types.length &&
+         this.state.inventory.length === allTypes.length &&
          this.state.stopAlert === null &&
          Alert.alert(
           'You collected all parts for your car!',
@@ -148,7 +183,6 @@ class ARrender extends Component {
          volume={1.0}
        />
        }
-
        </ViroARScene>
     );
   }
