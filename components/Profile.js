@@ -3,8 +3,6 @@ import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
 import styles from "./styles";
 import { connect } from "react-redux";
 import { fetchTypes, logout } from "../store";
-import { ViroARSceneNavigator } from "react-viro";
-var Searching = require("./AR/ARstart");
 
 class Profile extends React.Component {
   constructor() {
