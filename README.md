@@ -43,8 +43,8 @@ To run the app on your phone, complete the following steps:
 
 
 ## Team
-@anacsanchez
-@edanielleh
-@eunjisong
-@snwooten
+@anacsanchez \n
+@edanielleh \n
+@eunjisong \n
+@snwooten \n
 
