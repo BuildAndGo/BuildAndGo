@@ -4,8 +4,9 @@ Build and Go is an augmented reality mobile game for Android and iOS X. Search t
 
 ## Getting Started
 Clone this repo install dependences, and link font to React-Native with the following:
-```> npm install
-   > react-native link
+```
+> npm install   
+> react-native link
 ```
 
 # Technologies
