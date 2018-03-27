@@ -65,11 +65,11 @@ class ARrender extends Component {
   _resultAlert(){
 
     Alert.alert(
-      'You finished the racing!',
-      'See the result!',
+      'Race Complete!',
+      'View the result!',
       [
         {text: 'cancel', style: 'cancel'},
-        {text: 'Who\'s Winner?', onPress: this._randomResult},
+        {text: 'Who Won?', onPress: this._randomResult},
       ],
       { cancelable: false }
     )
