@@ -102,7 +102,6 @@ import {StyleSheet} from 'react-native';
     top: 350,
     position: 'absolute'
   },
-
   text: {
     color: '#ffffff',
     fontFamily: 'PaytoneOne-Regular'
@@ -176,18 +175,36 @@ import {StyleSheet} from 'react-native';
     textAlign: 'center',
     fontFamily: 'PaytoneOne-Regular'
   },
-  raceMessage: {
-    fontSize: 20,
-    top: 120,
-    margin: 10,
-    textAlign: 'center'
+  raceButton: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    padding: 10,
+    margin: 12
   },
-  raceTitle: {
-    fontSize: 25,
+  container2: {
+    flex:1,
+    top: 70,
+    alignItems: 'center'
+  },
+  resultContainer: {
+    width: 340,
     margin: 10,
-    top: 120,
-    textAlign: 'center'
-  }
+    height: 300,
+    backgroundColor: 'rgba(0,0,0, .8)',
+  },
+  resultContent: {
+    textAlign: 'center',
+    fontFamily: 'PaytoneOne-Regular',
+    color: '#ffffff',
+    fontSize: 20,
+  },
+  resultTitle: {
+    fontSize: 30,
+    color: '#ffffff',
+    textAlign: 'center',
+    padding: 20,
+    fontFamily: 'PaytoneOne-Regular'
+  },
 });
 
 export default styles;

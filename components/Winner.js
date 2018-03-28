@@ -34,29 +34,32 @@ export default class Winner extends React.Component {
       source={require("../assets/winner.jpg")}
       style={styles.backgroundImage}
     >
-      <View style={styles.container}>
+      <View style={styles.container2}>
 
-        <View>
-          <Text style={styles.raceTitle}>Congratulations!</Text>
-          <Text style={styles.raceMessage}>You Won the Race.</Text>
-          <Text style={styles.raceMessage}>Do you want to play again?</Text>
+        <View style={styles.resultContainer}>
+          <Text style={styles.resultTitle}>Congratulations!</Text>
+          <Text style={styles.resultContent}>
+          You Won the race. {"\n \n"}
+          Do you want to play again?
+          </Text>
         </View>
 
         <View>
           <TouchableOpacity
-            style={styles.button}
+            style={styles.raceButton}
             onPress={() => this.props.navigation.navigate("Searching")}
           >
-            <Text>Build a Car</Text>
+            <Text style={styles.btnText}>Build a Car</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.button2}
+            style={styles.raceButton}
             onPress={ () => this.setState({type: 'video'})}
           >
-            <Text>Race your car</Text>
+            <Text style={styles.btnText}>Race your car</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </Image>
     )
