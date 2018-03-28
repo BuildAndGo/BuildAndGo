@@ -24,10 +24,7 @@ import {StyleSheet} from 'react-native';
   inventoryContainer: {
     top: 50,
     padding: 100,
-    backgroundColor: 'rgba(0,0,0, .8)',
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center'
+    backgroundColor: 'rgba(0,0,0, .8)'
   },
   inventory: {
     fontSize: 15,

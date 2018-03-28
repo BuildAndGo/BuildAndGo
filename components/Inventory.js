@@ -29,10 +29,8 @@ export class Inventory extends React.Component {
           <Text
           style={styles.inventory}>{item.name}{"\n"}
             <Image
-            style={{width: 200, height: 200, left: 200}}
-            center
+            style={{width: 200, height: 200}}
             source={{uri: item.image}}
-            resizeMode="contain"
             />
           </Text>
           </View>
@@ -50,11 +48,12 @@ export class Inventory extends React.Component {
         if (cache.indexOf(type.id) === -1) {
           return (
             <View key={type.id}>
-              <Text style={styles.need}>{type.name}</Text>
+              <Text style={styles.need}>{type.name}{"\n"}
               <Image
-              style={{width: 100, height: 100}}
+              style={{width: 200, height: 200}}
               source={{uri: type.image}}
               />
+              </Text>
             </View>
             )
           }
