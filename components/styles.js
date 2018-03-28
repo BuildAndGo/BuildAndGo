@@ -27,7 +27,7 @@ import {StyleSheet} from 'react-native';
     paddingLeft: 100,
     paddingTop: 50,
     paddingRight: 100,
-    paddingBottom: 120,
+    // paddingBottom: 120,
     alignContent: 'center',
     backgroundColor: 'rgba(0,0,0, .8)'
   },
@@ -164,7 +164,8 @@ import {StyleSheet} from 'react-native';
   },
   stillNeededTitle: {
     fontSize: 20,
-    top: -20,
+    // top: -20,
+    padding: 20,
     color: '#ffffff',
     fontFamily: 'PaytoneOne-Regular'
   },

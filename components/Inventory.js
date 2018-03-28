@@ -21,7 +21,7 @@ export class Inventory extends React.Component {
       style={styles.backgroundImage}>
       <Text style={styles.inventoryBGTitle}>Build and Go!</Text>
       <View style={styles.inventoryContainer}>
-        <Text style={styles.inventoryTitle}>Inventory</Text>
+        <Text style={styles.inventoryTitle}>Parts Found</Text>
         {inventory && inventory.length ?
         // inventory.map(item => {
           // cache.push(item.typeId)
@@ -30,8 +30,12 @@ export class Inventory extends React.Component {
           //   <Text style={styles.inventory}>{item.name}</Text>
           //   <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
           // </View>
-          <FlatList data={inventory} showsVerticalScrollIndicator={false} keyExtractor={item => item.id} renderItem={({item}) =>
-          <View key={item.id}>
+          <FlatList data={inventory} showsVerticalScrollIndicator={false} keyExtractor={item => item.id} ListHeaderComponent={() => {
+            // <Text style={styles.stillNeededTitle}>Car Complete! </Text>
+            return cache.length === types.length ? null:
+          <Text style={styles.stillNeededTitle}>Still Needed</Text>
+          }} renderItem={({item}) =>
+          <View key={item.id} style={{padding:10}}>
           <Text
           style={styles.inventory}>{item.name}{"\n"}
             <Image
@@ -41,14 +45,26 @@ export class Inventory extends React.Component {
           </Text>
           </View>
           }
-          ><Text style={styles.inventory}>Hi</Text>
+          ListFooterComponent={() => {
+            return cache.length === types.length ?            <Text style={styles.stillNeededTitle}>Car Complete! </Text> : null }} renderItem={({item}) =>
+          <View key={item.id} style={{padding:10}}>
+          <Text
+          style={styles.inventory}>{item.name}{"\n"}
+            <Image
+            style={{width: 300, height: 300}}
+            source={{uri: item.image}}
+            />
+          </Text>
+          </View>
+          }
+          >
           </FlatList>
         : <Text style={styles.inventory}>Start Searching!</Text>
         }
-        {
+        {/* {
           cache.length === types.length ? <Text style={styles.stillNeededTitle}>Car Complete! </Text> :
           <Text style={styles.stillNeededTitle}>Still Needed</Text>
-        }
+        } */}
         {
         types && types.length ?
         types.map(type => {
