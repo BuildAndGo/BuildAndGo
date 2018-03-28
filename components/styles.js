@@ -26,13 +26,11 @@ import {StyleSheet} from 'react-native';
   },
   instructions: {
     color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular',
     padding: 20,
     top: -20
   },
   instructionsGo: {
     color: '#ffffff',
-    fontFamily: 'fasterone_regular',
     fontSize: 20,
   },
   button: {
@@ -67,7 +65,6 @@ import {StyleSheet} from 'react-native';
   logoutTxt: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'PaytoneOne-Regular'
   },
   tagLine: {
     alignItems: 'center',
@@ -79,7 +76,6 @@ import {StyleSheet} from 'react-native';
   },
   text: {
     color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular'
   },
   containerInput: {
     width: '90%',
@@ -118,49 +114,41 @@ import {StyleSheet} from 'react-native';
     padding: 20,
     backgroundColor: 'rgba(255,255,255, .9)',
     color: 'rgba(228,15,15,1)',
-    fontFamily: 'PaytoneOne-Regular'
   },
   btnText: {
     fontSize: 20,
     color: '#000000',
-    fontFamily: 'PaytoneOne-Regular'
   },
    title: {
      fontSize: 20,
      color: '#ffffff',
      top: 120,
     textAlign: 'center',
-    fontFamily: 'fasterone_regular'
   },
   inventoryTitle: {
     fontSize: 20,
     top: -70,
     color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular'
   },
    inventory: {
     fontSize: 15,
     color: '#ffffff',
     top: -50,
-    fontFamily: 'PaytoneOne-Regular'
   },
     need: {
     fontSize: 15,
     color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular'
   },
   stillNeededTitle: {
     fontSize: 20,
     top: -20,
     color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular'
   },
   titleProfile: {
     fontSize: 20,
     color: '#ffffff',
     top: 80,
     textAlign: 'center',
-    fontFamily: 'PaytoneOne-Regular'
   },
   raceButton: {
     backgroundColor: '#ffffff',
@@ -181,7 +169,6 @@ import {StyleSheet} from 'react-native';
   },
   resultContent: {
     textAlign: 'center',
-    fontFamily: 'PaytoneOne-Regular',
     color: '#ffffff',
     fontSize: 20,
   },
@@ -190,7 +177,6 @@ import {StyleSheet} from 'react-native';
     color: '#ffffff',
     textAlign: 'center',
     padding: 20,
-    fontFamily: 'PaytoneOne-Regular'
   },
 });
 
