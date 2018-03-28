@@ -112,16 +112,10 @@ class Searching extends Component {
 
 const mapState = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
 const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory, postToInventory }
-// const mapDispatch = { fetchTypes, fetchCurrentInventory, updateInventory }
+
 
 export default connect(mapState, mapDispatch)(Searching)
 
-// module.exports = Searching
-
-// const mapState = ({user, currentInventory}) => ({user, currentInventory})
-// const mapDispatch = {fetchCurrentInventory}
-
-// export default connect(mapState, mapDispatch)(Searching)
 
 var localStyles = StyleSheet.create({
   viroContainer: {

@@ -142,7 +142,7 @@ import {StyleSheet} from 'react-native';
    inventory: {
     fontSize: 15,
     color: '#ffffff',
-    top: -50,
+    // top: -50,
     fontFamily: 'PaytoneOne-Regular'
   },
     need: {
