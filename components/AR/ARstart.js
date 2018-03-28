@@ -30,9 +30,7 @@ class Searching extends Component {
     this.updateInventory = this.updateInventory.bind(this);
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(
-      this
-    );
+    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
 
@@ -64,7 +62,7 @@ class Searching extends Component {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>Are You Ready??</Text>
+          <Text style={localStyles.titleText}>Are You Ready?</Text>
 
           <TouchableHighlight
             style={localStyles.buttons}
@@ -73,13 +71,7 @@ class Searching extends Component {
           >
             <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={()=>this.props.navigation.navigate('Profile')}
-            underlayColor={"#ffffff"}
-          >
-            <Text style={localStyles.buttonText}>Profile</Text>
-          </TouchableHighlight>
+
         </View>
       </View>
     );

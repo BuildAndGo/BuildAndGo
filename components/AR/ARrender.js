@@ -43,7 +43,6 @@ class ARrender extends Component {
         newPart: newPart
       });
     }
-    // this.setState()
   }
 
   handleDuplicate(part, replace) {
@@ -59,8 +58,8 @@ class ARrender extends Component {
 
   _randomResult() {
     var truthyOrFalsy = Math.floor((Math.random() * 2));
-    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigate("Winner")
-    else return this.props.arSceneNavigator.viroAppProps.navigate("Loser")
+    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Winner")
+    else return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Loser")
   }
 
   _resultAlert(){
@@ -98,7 +97,6 @@ class ARrender extends Component {
              width={3}
              onClick={() => {
                this._onClick(part);
-              //  this.visible = false;
               } }
              onDrag={() => {}}
            />
@@ -141,7 +139,7 @@ class ARrender extends Component {
                   this._resultAlert()
             return this.setState({ video: null })
         }}
-         loop={true}
+         loop={false}
          paused={false}
          position={[0, 0, -5]}
          scale={[2, 2, 0]}
