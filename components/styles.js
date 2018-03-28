@@ -14,9 +14,34 @@ import {StyleSheet} from 'react-native';
     top: 150,
     alignItems: 'center',
   },
+  inventoryBGTitle: {
+    fontSize: 20,
+     color: '#ffffff',
+     top: 40,
+    textAlign: 'center',
+    fontFamily: 'fasterone_regular'
+  },
   inventoryContainer: {
-    padding: 100,
+    flexDirection: 'column',
+    top: 50,
+    paddingLeft: 100,
+    paddingTop: 50,
+    paddingRight: 100,
+    paddingBottom: 120,
+    alignContent: 'center',
     backgroundColor: 'rgba(0,0,0, .8)'
+  },
+  inventory: {
+    fontSize: 15,
+    color: '#ffffff',
+    // top: -50,
+    fontFamily: 'PaytoneOne-Regular'
+  },
+    inventoryTitle: {
+    fontSize: 20,
+    top: -30,
+    color: '#ffffff',
+    fontFamily: 'PaytoneOne-Regular'
   },
   instructionsContainer: {
     backgroundColor: 'rgba(0,0,0, .8)',
@@ -132,18 +157,6 @@ import {StyleSheet} from 'react-native';
      top: 120,
     textAlign: 'center',
     fontFamily: 'fasterone_regular'
-  },
-  inventoryTitle: {
-    fontSize: 20,
-    top: -70,
-    color: '#ffffff',
-    fontFamily: 'PaytoneOne-Regular'
-  },
-   inventory: {
-    fontSize: 15,
-    color: '#ffffff',
-    // top: -50,
-    fontFamily: 'PaytoneOne-Regular'
   },
     need: {
     fontSize: 15,
