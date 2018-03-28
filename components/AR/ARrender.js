@@ -125,7 +125,7 @@ class ARrender extends Component {
          loop={false}
          paused={false}
          position={[0, 0, -5]}
-         scale={[2, 2, 0]}
+         scale={[3, 3, 0]}
          volume={1.0}
        />
        }
