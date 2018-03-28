@@ -20,13 +20,11 @@ class ARrender extends Component {
       availableParts: [],
       newPart: {},
       found: false,
-      isDuplicate: false,
     };
 
     this._onClick = this._onClick.bind(this);
     this._randomResult = this._randomResult.bind(this)
     this._resultAlert = this._resultAlert.bind(this)
-    this.handleDuplicate = this.handleDuplicate.bind(this);
   }
 
   componentDidMount() {
@@ -34,14 +32,9 @@ class ARrender extends Component {
     this.setState({
       types: types.map(type => {
         let part = type.parts[0];
-        // let zOptions = [Math.random() * (24 - (-24)) + (-24)), (Math.random() * (6 - 2) + 2)];
-        // let zOptions = [Math.random() * (24 - (-24)) + (-24)), (Math.random() * (6 - 2) + 2)];
-
         part['x'] = Math.random() * 16;
         part['y'] = Math.random() * (-6 - 0.5) + (-0.5);
         part['z'] = Math.random() * (20 - (-20)) + (-20);
-        // part['z'] = Math.random() * ;
-        // part['z'] = Math.random() * -12 + 12;
         return ({
           id: part.id,
           type: part.typeId,
@@ -80,19 +73,6 @@ class ARrender extends Component {
     })
   }
 
-  handleDuplicate(part, replace) {
-    let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
-    if (replace) {
-      updateInventory(part, true);
-    }
-    this.setState({
-      newPart: {},
-      isDuplicate: false,
-      stopAlert: true
-    })
-
-  }
-
   _randomResult() {
     var truthyOrFalsy = Math.floor((Math.random() * 2));
     if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Winner")
@@ -117,62 +97,23 @@ class ARrender extends Component {
     let allTypes = this.props.arSceneNavigator.viroAppProps.types;
     return (
        <ViroARScene>
-      {/* { this.state.inventory.length ? console.warn(this.state.inventory.length) : null} */}
-      { Object.keys(this.state.newPart).length ? console.warn(this.state.newPart.name) : null}
-       {
-        //  types && types.map(type => {
-        //    let part = type.parts[0];
-        //    part['x'] = Math.random() * 10 - 5;
-        //    part['y'] = -0.5;
-        //    part['z'] = Math.random() * -12 + 6;
-        //    return (
-        //       <ViroButton
-        //       key={part.id}
-        //       source={{uri: part.image}}
-        //       position={[part.x, part.y, part.z]}
-        //       height={2}
-        //       width={3}
-        //       onClick={() => {
-        //         this._onClick(part);
-        //         // this.visible = false;
-        //       }}
-        //      onDrag={() => {}}
-        //    />
-        //    )
-        //  })
-       }
+        {
+          this.state.types.map(part => part.button)
+        }
 
-      {
-         this.state.types.map(part => part.button)
-      }
-
-       {
-        //  this.state.isDuplicate &&
-        //  Alert.alert(
-        //   'Duplicate part found',
-        //   'Do you want to replace your current with?',
-        //   [
-        //     {text: 'No', style: 'cancel', onPress: () => this.handleDuplicate(this.state.newPart, false)},
-        //     {text: 'Yes', onPress: () => this.handleDuplicate(this.state.newPart, true) },
-        //   ],
-        //   { cancelable: false }
-        // )
-       }
-
-       {
-         this.state.inventory.length === allTypes.length &&
-         this.state.stopAlert === null &&
-         Alert.alert(
-          'You collected all parts for your car!',
-          'See your Inventory',
-          [
-            // { text: 'Inventory', onPress: () => this.props.arSceneNavigator.viroAppProps.navigate('CompleteCar') },
-            {text: 'Keep Looking', style: 'cancel'},
-            {text: 'Start Racing', onPress: () =>  this.setState({ video: true, stopAlert: true })},
-          ],
-          { cancelable: false }
-        )
-       }
+        {
+          this.state.inventory.length === allTypes.length &&
+          this.state.stopAlert === null &&
+          Alert.alert(
+            'You collected all parts for your car!',
+            'See your Inventory',
+            [
+              {text: 'Keep Looking', style: 'cancel'},
+              {text: 'Start Racing', onPress: () =>  this.setState({ video: true, stopAlert: true })},
+            ],
+            { cancelable: false }
+          )
+        }
 
        {
          this.state.video &&
