@@ -16,8 +16,7 @@ export default class Racing extends React.Component {
 
   _randomResult() {
     var truthyOrFalsy = Math.floor(Math.random() * 2);
-    if (truthyOrFalsy)
-      return this.props.arSceneNavigator.viroAppProps.navigate("Winner");
+    if (truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigate("Winner");
     else return this.props.arSceneNavigator.viroAppProps.navigate("Loser");
   }
 
@@ -46,7 +45,7 @@ export default class Racing extends React.Component {
             loop={false}
             paused={false}
             position={[0, 0, -5]}
-            scale={[2, 2, 0]}
+            scale={[3, 3, 0]}
             volume={1.0}
           />
         }
