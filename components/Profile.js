@@ -21,14 +21,6 @@ class Profile extends React.Component {
     this.props.fetchTypes();
   }
 
-  _racingAlert() {
-    Alert.alert(
-      "You haven't built a car",
-      "Start collecting parts for your car",
-      [{ text: "Go Back", style: "cancel" }],
-      { cancelable: false }
-    );
-  }
 
   render() {
     let email = this.props.user.email;
@@ -82,9 +74,6 @@ class Profile extends React.Component {
             <Text style={styles.btnText}>View Inventory</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button3} onPress={this._racingAlert}>
-            <Text style={styles.btnText}>Start Racing</Text>
-          </TouchableOpacity>
         </View>
       </Image>
     );

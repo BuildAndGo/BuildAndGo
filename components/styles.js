@@ -22,8 +22,10 @@ import {StyleSheet} from 'react-native';
     fontFamily: 'fasterone_regular'
   },
   inventoryContainer: {
+    flexDirection: 'column',
     top: 50,
     padding: 100,
+    alignContent: 'center',
     backgroundColor: 'rgba(0,0,0, .8)'
   },
   inventory: {
