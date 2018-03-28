@@ -2,19 +2,18 @@ import React from "react";
 import { View, Text, Image} from "react-native";
 import styles from './styles';
 import { connect } from 'react-redux';
-import { fetchTypes, fetchCurrentInventory } from '../store';
+import { fetchCurrentInventory } from '../store';
 
 
 export class Inventory extends React.Component {
 
  componentDidMount() {
-    this.props.fetchCurrentInventory(this.props.user.id)
+    this.props.fetchCurrentInventory(this.props.user.id);
   }
 
   render() {
-    //const inventory = this.props.user.parts;
-    const types = this.props.allTypes
-    const inventory = this.props.currentInventory
+    const inventory = this.props.currentInventory;
+    const types = this.props.allTypes;
     let cache = []
     return (
       <Image source={require('../assets/img/loginbkg.jpg')}
@@ -29,25 +28,27 @@ export class Inventory extends React.Component {
           return (
           <View key={item.id}>
             <Text style={styles.inventory}>{item.name}</Text>
-            <Image source={{uri: item.image}} height={2}
-             width={3} />
+            <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
           </View>
           )
         })
-        : <Text style={styles.inventory}>Start Searching</Text>
+        : <Text style={styles.inventory}>Start Searching!</Text>
         }
         {
           cache.length === types.length ? <Text style={styles.stillNeededTitle}>Car Complete! </Text> :
           <Text style={styles.stillNeededTitle}>Still Needed</Text>
         }
-        {types && types.length ?
+        {
+        types && types.length ?
         types.map(type => {
         if (cache.indexOf(type.id) === -1) {
           return (
             <View key={type.id}>
               <Text style={styles.need}>{type.name}</Text>
-              <Image source={{uri: type.image}} height={2}
-             width={3} />
+              <Image
+              style={{width: 100, height: 100}}
+              source={{uri: type.image}}
+              />
             </View>
             )
           }
