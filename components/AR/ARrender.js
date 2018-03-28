@@ -16,16 +16,41 @@ class ARrender extends Component {
       video: null,
       stopAlert: null,
       inventory: props.arSceneNavigator.viroAppProps.inventory,
+      types: [],
       availableParts: [],
       newPart: {},
       found: false,
-      isDuplicate: false,
     };
 
     this._onClick = this._onClick.bind(this);
     this._randomResult = this._randomResult.bind(this)
     this._resultAlert = this._resultAlert.bind(this)
-    this.handleDuplicate = this.handleDuplicate.bind(this);
+  }
+
+  componentDidMount() {
+    const { types } = this.props.arSceneNavigator.viroAppProps;
+    this.setState({
+      types: types.map(type => {
+        let part = type.parts[0];
+        part['x'] = Math.random() * 16;
+        part['y'] = Math.random() * (-6 - 0.5) + (-0.5);
+        part['z'] = Math.random() * (20 - (-20)) + (-20);
+        return ({
+          id: part.id,
+          type: part.typeId,
+          button: <ViroButton
+          key={part.id}
+          source={{uri: part.image}}
+          position={[part.x, part.y, part.z]}
+          height={2}
+          width={3}
+          transformBehaviors="billboard"
+          onClick={() => this._onClick(part) }
+          onDrag={() => {}}
+        />
+        })
+      })
+    })
   }
 
   _onClick(newPart) {
@@ -34,25 +59,16 @@ class ARrender extends Component {
       updateInventory(newPart, false);
       this.setState({
         inventory: this.state.inventory.concat(newPart),
-        newPart: {}
+        newPart: {},
       });
     }
-    else if (this.state.inventory.find(part => part.typeId === newPart.typeId && part.id !== newPart.id)) {
+    else if ( this.state.inventory.findIndex(part => (part.typeId === newPart.typeId) && (part.id !== newPart.id)) !== -1 ) {
       this.setState({
-        isDuplicate: true,
-        newPart: newPart
+        newPart: newPart,
       });
-    }
-  }
-
-  handleDuplicate(part, replace) {
-    let { updateInventory } = this.props.arSceneNavigator.viroAppProps;
-    if (replace) {
-      updateInventory(part, true);
     }
     this.setState({
-      newPart: {},
-      isDuplicate: false
+      types: this.state.types.filter(part => part.id !== newPart.id)
     })
   }
 
@@ -76,60 +92,27 @@ class ARrender extends Component {
   }
 
   render() {
-    let { types, inventory } = this.props.arSceneNavigator.viroAppProps;
-
+    let { types, inventory } = this.state;
+    let allTypes = this.props.arSceneNavigator.viroAppProps.types;
     return (
        <ViroARScene>
-      { console.warn(this.state.inventory.length) }
+        {
+          this.state.types.map(part => part.button)
+        }
 
-       {
-         types && types.map(type => {
-           let part = type.parts[0];
-           part['x'] = Math.random() * 10 - 5;
-           part['y'] = -0.5;
-           part['z'] = Math.random() * -12 + 6;
-           return (
-             <ViroButton
-             key={part.id}
-             source={{uri: part.image}}
-             position={[part.x, part.y, part.z]}
-             height={2}
-             width={3}
-             onClick={() => {
-               this._onClick(part);
-              } }
-             onDrag={() => {}}
-           />
-           )
-         })
-       }
-
-       {
-         this.state.isDuplicate && Object.keys(this.state.newPart).length &&
-         Alert.alert(
-          `Do you want to replace your current ${this.state.newPart.type.name} with ${this.state.newPart.name}?`,
-          [
-            {text: 'No', style: 'cancel', onPress: () => this.handleDuplicate(this.start.newPart, false)},
-            {text: 'Yes', onPress: () => this.handleDuplicate(this.state.newPart, true) },
-          ],
-          { cancelable: false }
-        )
-       }
-
-       {
-         this.state.inventory.length === types.length &&
-         this.state.stopAlert === null &&
-         Alert.alert(
-          'You collected all parts for your car!',
-          'See your Inventory',
-          [
-            // { text: 'Inventory', onPress: () => this.props.arSceneNavigator.viroAppProps.navigate('CompleteCar') },
-            {text: 'Keep Looking', style: 'cancel'},
-            {text: 'Start Racing', onPress: () =>  this.setState({ video: true, stopAlert: true })},
-          ],
-          { cancelable: false }
-        )
-       }
+        {
+          this.state.inventory.length === allTypes.length &&
+          this.state.stopAlert === null &&
+          Alert.alert(
+            'You collected all parts for your car!',
+            'See your Inventory',
+            [
+              {text: 'Keep Looking', style: 'cancel'},
+              {text: 'Start Racing', onPress: () =>  this.setState({ video: true, stopAlert: true })},
+            ],
+            { cancelable: false }
+          )
+        }
 
        {
          this.state.video &&
@@ -146,7 +129,6 @@ class ARrender extends Component {
          volume={1.0}
        />
        }
-
        </ViroARScene>
     );
   }

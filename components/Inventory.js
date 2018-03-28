@@ -3,19 +3,19 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles';
 import { connect } from 'react-redux';
-import { fetchTypes } from '../store';
+import { fetchTypes, fetchCurrentInventory } from '../store';
 
 
 export class Inventory extends React.Component {
 
  componentDidMount() {
-
-    this.props.fetchTypes()
+    this.props.fetchTypes();
+    this.props.fetchCurrentInventory(this.props.user.id);
   }
 
   render() {
-    const inventory = this.props.user.parts;
-    const types = this.props.allTypes
+    const inventory = this.props.currentInventory;
+    const types = this.props.allTypes;
     let cache = []
     return (
       <Image source={require('../assets/img/loginbkg.jpg')}
@@ -30,17 +30,18 @@ export class Inventory extends React.Component {
           return (
           <View key={item.id}>
             <Text style={styles.inventory}>{item.name}</Text>
-            <Image source={{uri: inventory.image}} />
+            <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
           </View>
           )
         })
-        : <Text style={styles.inventory}>Start Searching</Text>
+        : <Text style={styles.inventory}>Start Searching!</Text>
         }
         {
           cache.length === types.length ? <Text style={styles.stillNeededTitle}>Car Complete! </Text> :
           <Text style={styles.stillNeededTitle}>Still Needed</Text>
         }
-        {types && types.length ?
+        {
+        types && types.length ?
         types.map(type => {
         if (cache.indexOf(type.id) === -1) {
           return (
@@ -60,8 +61,8 @@ export class Inventory extends React.Component {
   }
 }
 
-const mapState  = ({ user, allTypes }) => ({ user, allTypes })
+const mapState  = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
 
-export const mapDispatch = { fetchTypes }
+export const mapDispatch = { fetchTypes, fetchCurrentInventory }
 
 export default connect(mapState, mapDispatch)(Inventory)

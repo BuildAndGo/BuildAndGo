@@ -28,7 +28,7 @@ export const fetchCurrentInventory = userId => dispatch => {
     .then(res => res.data)
     .then(parts => {
       dispatch(getCurrentInventory(parts))
-      console.log(parts);
+      // console.log(parts);
     })
     .catch(err => console.error(`error fetching inventory for user id: ${userId}`, err))
 };
