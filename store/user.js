@@ -59,3 +59,7 @@ export const updateUser = (userId, edits) => dispatch => {
   .then(userData => dispatch(editUser(userData)))
   .catch(err => console.error(`error updating user: ${userId}`, err))
 }
+
+export const logout = () => dispatch => {
+  return dispatch(removeUser())
+}

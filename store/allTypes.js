@@ -8,14 +8,16 @@ const GET_ALL_TYPES = 'GET_ALL_TYPES';
 const getAllTypes = allTypes => ({ type: GET_ALL_TYPES, allTypes });
 
 //Reducer
-export default (allTypes = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case GET_ALL_TYPES:
+    //  console.log(action, state)
       return action.allTypes
     default:
-      return allTypes
+      return state
   }
 }
+
 
 //Thunks
 export const fetchTypes = () => dispatch => {
