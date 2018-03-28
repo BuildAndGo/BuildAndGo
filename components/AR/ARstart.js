@@ -74,13 +74,6 @@ class Searching extends Component {
             <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
 
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={()=>this.props.navigation.navigate('Profile')}
-            underlayColor={"#68a0ff"}
-          >
-            <Text style={localStyles.buttonText}>profile!</Text>
-          </TouchableHighlight>
         </View>
       </View>
     );

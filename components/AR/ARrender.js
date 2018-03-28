@@ -34,9 +34,14 @@ class ARrender extends Component {
     this.setState({
       types: types.map(type => {
         let part = type.parts[0];
-        part['x'] = Math.random() * 10 - 5;
-        part['y'] = -0.5;
-        part['z'] = Math.random() * -12 + 6;
+        // let zOptions = [Math.random() * (24 - (-24)) + (-24)), (Math.random() * (6 - 2) + 2)];
+        // let zOptions = [Math.random() * (24 - (-24)) + (-24)), (Math.random() * (6 - 2) + 2)];
+
+        part['x'] = Math.random() * 16;
+        part['y'] = Math.random() * (-6 - 0.5) + (-0.5);
+        part['z'] = Math.random() * (20 - (-20)) + (-20);
+        // part['z'] = Math.random() * ;
+        // part['z'] = Math.random() * -12 + 12;
         return ({
           id: part.id,
           type: part.typeId,
@@ -46,6 +51,7 @@ class ARrender extends Component {
           position={[part.x, part.y, part.z]}
           height={2}
           width={3}
+          transformBehaviors="billboard"
           onClick={() => this._onClick(part) }
           onDrag={() => {}}
         />
@@ -89,8 +95,8 @@ class ARrender extends Component {
 
   _randomResult() {
     var truthyOrFalsy = Math.floor((Math.random() * 2));
-    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigate("Winner")
-    else return this.props.arSceneNavigator.viroAppProps.navigate("Loser")
+    if(truthyOrFalsy) return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Winner")
+    else return this.props.arSceneNavigator.viroAppProps.navigation.navigate("Loser")
   }
 
   _resultAlert(){
@@ -176,7 +182,7 @@ class ARrender extends Component {
                   this._resultAlert()
             return this.setState({ video: null })
         }}
-         loop={true}
+         loop={false}
          paused={false}
          position={[0, 0, -5]}
          scale={[2, 2, 0]}
