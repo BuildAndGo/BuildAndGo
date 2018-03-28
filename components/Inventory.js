@@ -1,21 +1,20 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { StackNavigator } from "react-navigation";
+import { View, Text, Image} from "react-native";
 import styles from './styles';
 import { connect } from 'react-redux';
-import { fetchTypes } from '../store';
+import { fetchTypes, fetchCurrentInventory } from '../store';
 
 
 export class Inventory extends React.Component {
 
  componentDidMount() {
-
-    this.props.fetchTypes()
+    this.props.fetchCurrentInventory(this.props.user.id)
   }
 
   render() {
-    const inventory = this.props.user.parts;
+    //const inventory = this.props.user.parts;
     const types = this.props.allTypes
+    const inventory = this.props.currentInventory
     let cache = []
     return (
       <Image source={require('../assets/img/loginbkg.jpg')}
@@ -30,7 +29,8 @@ export class Inventory extends React.Component {
           return (
           <View key={item.id}>
             <Text style={styles.inventory}>{item.name}</Text>
-            <Image source={{uri: inventory.image}} />
+            <Image source={{uri: item.image}} height={2}
+             width={3} />
           </View>
           )
         })
@@ -46,7 +46,8 @@ export class Inventory extends React.Component {
           return (
             <View key={type.id}>
               <Text style={styles.need}>{type.name}</Text>
-              <Image source={{uri: type.image}} />
+              <Image source={{uri: type.image}} height={2}
+             width={3} />
             </View>
             )
           }
@@ -60,8 +61,8 @@ export class Inventory extends React.Component {
   }
 }
 
-const mapState  = ({ user, allTypes }) => ({ user, allTypes })
+const mapState  = ({ user, allTypes, currentInventory }) => ({ user, allTypes, currentInventory })
 
-export const mapDispatch = { fetchTypes }
+export const mapDispatch = { fetchCurrentInventory }
 
 export default connect(mapState, mapDispatch)(Inventory)
