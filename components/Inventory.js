@@ -18,8 +18,7 @@ export class Inventory extends React.Component {
     return (
       <Image source={require('../assets/img/loginbkg.jpg')}
       style={styles.backgroundImage}>
-      <Text style={styles.title}>Build and Go!</Text>
-      <View style={styles.container}>
+      <Text style={styles.inventoryBGTitle}>Build and Go!</Text>
       <View style={styles.inventoryContainer}>
         <Text style={styles.inventoryTitle}>Inventory</Text>
         {inventory && inventory.length ?
@@ -27,8 +26,15 @@ export class Inventory extends React.Component {
           cache.push(item.typeId)
           return (
           <View key={item.id}>
-            <Text style={styles.inventory}>{item.name}</Text>
-            <Image style={{width: 100, height: 100}} source={{uri: item.image}} />
+          <Text
+          style={styles.inventory}>{item.name}{"\n"}
+            <Image
+            style={{width: 200, height: 200, left: 200}}
+            center
+            source={{uri: item.image}}
+            resizeMode="contain"
+            />
+          </Text>
           </View>
           )
         })
@@ -55,7 +61,6 @@ export class Inventory extends React.Component {
         })
         : <Text>...</Text>
         }
-      </View>
       </View>
       </Image>
     );
