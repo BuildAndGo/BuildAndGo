@@ -8,15 +8,16 @@ import {
   TouchableHighlight
 } from "react-native";
 import { StackNavigator } from "react-navigation";
+// we have this prop =>  this.props.navigation.navigate('another screen')
 import { ViroSceneNavigator, ViroARSceneNavigator } from "react-viro";
 import { connect } from 'react-redux'
 import { fetchCurrentInventory, fetchTypes, updateInventory, postToInventory } from '../../store'
+// import { fetchCurrentInventory, fetchTypes, updateInventory } from '../../store'
 
 
 var sharedProps = { apiKey: "C137FAFA-F8C2-4D21-AD2E-CC1DDE574BE3" };
 var UNSET = "UNSET";
 var AR_NAVIGATOR_TYPE = "AR";
-var VIDEO = "VIDEO";
 
 class Searching extends Component {
   constructor() {
@@ -52,8 +53,6 @@ class Searching extends Component {
       return this._getExperienceSelector();
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
-    } else if (this.state.navigatorType == VIDEO) {
-      return this._getARNavigator('racing');
     }
   }
 
@@ -63,40 +62,33 @@ class Searching extends Component {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>Are You Ready??</Text>
+          <Text style={localStyles.titleText}>Are You Ready?</Text>
 
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
             underlayColor={"#ffffff"}
           >
-            <Text style={localStyles.buttonText}>Searching</Text>
+            <Text style={localStyles.buttonText}>Start!</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(VIDEO)}
-            underlayColor={"#ffffff"}
-          >
-            <Text style={localStyles.buttonText}>Racing</Text>
-          </TouchableHighlight>
+
         </View>
       </View>
     );
   }
 
-
-  _getARNavigator(searchingOrRacing) {
+  // Returns the ViroARSceneNavigator which will start the AR experience
+  _getARNavigator() {
     let sceneProps = {
       navigation: this.props.navigation,
       inventory: this.props.currentInventory,
       types: this.props.allTypes,
       updateInventory: this.updateInventory
     }
-    let renderedScene = searchingOrRacing == 'racing' ? require('../2DRacing') : require('./ARrender')
     return (
       <ViroARSceneNavigator
         {...this.state.sharedProps}
-        initialScene={{ scene: renderedScene }}
+        initialScene={{ scene: require("./ARrender") }}
         viroAppProps={ sceneProps }
       />
     );
