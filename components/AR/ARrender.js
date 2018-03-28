@@ -64,7 +64,6 @@ class ARrender extends Component {
     }
     else if ( this.state.inventory.findIndex(part => (part.typeId === newPart.typeId) && (part.id !== newPart.id)) !== -1 ) {
       this.setState({
-        isDuplicate: true,
         newPart: newPart,
       });
     }
