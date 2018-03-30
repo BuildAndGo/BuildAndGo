@@ -47,9 +47,9 @@ export default class Winner extends React.Component {
         <View>
           <TouchableOpacity
             style={styles.raceButton}
-            onPress={() => this.props.navigation.navigate("Searching")}
+            onPress={() => this.props.navigation.navigate("Inventory")}
           >
-            <Text style={styles.btnText}>Build a Car</Text>
+            <Text style={styles.btnText}>Inventory</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
