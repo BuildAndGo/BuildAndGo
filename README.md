@@ -5,17 +5,17 @@ Build and Go is an augmented reality mobile game for Android and iOS X. Search t
 ## Technologies
 Build and Go was made using React Native as well as ViroMedia SDK for augmented reality, React Navigation for app navigation, and Redux to store state.
 
-Our backend server was made using Node.js, Express, and Sequelize with PostgreSQL and was deployed to Heroku for remote access.
+Our backend server was made using Node.js, Express, and Sequelize with PostgreSQL and was deployed to Heroku for remote access. Images for parts are hosted by AWS.
 
 ## Getting Started
 Clone this repo install dependences, and link font to React-Native with the following:
 ```
-> npm install   
+> npm install
 > react-native link
 ```
 ### Android Emulator
 If you're running on an android emulator, select the following device parameters for the best experience:
-Phone: Pixel or Pixel2 
+Phone: Pixel or Pixel2
 Release Name: Oreo
 API level: 27
 Android Version: 8.1
@@ -38,7 +38,7 @@ To run the app on your phone, complete the following steps:
 ```
 3. Open the ViroMedia app on your phone and click the hamburger menu on top left
 4. Click </> Enter Testbed, input the ngrok code generated in your terminal, and click Go to start the app
-5. Refuse to download Google VR then shake your phone to see a menu
+5. Shake your phone to see a menu
 6. Select Reload and you're in!
 
 
