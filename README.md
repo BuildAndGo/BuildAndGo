@@ -1,6 +1,6 @@
 # BuildAndGo
 
-Build and Go is an augmented reality mobile game for Android and iOS X. Search the world for car parts until you find everything you need to build your racer. Once your car is complete, race to become the new Build and Go champion.
+BuildAndGo is an augmented reality mobile game for Android and iOS X. Search the world for parts until you find everything you need to build your very own car. Once your car is complete, race to become the new BuildAndGo champion.
 
 ## Technologies
 Build and Go was made using React Native as well as ViroMedia SDK for augmented reality, React Navigation for app navigation, and Redux to store state.
@@ -42,9 +42,10 @@ To run the app on your phone, complete the following steps:
 6. Select Reload and you're in!
 
 
-## Team
-@anacsanchez
-@edanielleh
-@eunjisong
-@snwooten
+## Contributors
+
+* [Ana Sanchez](https://github.com/anacsanchez)
+* [Danielle Howard](https://github.com/danielleh)
+* [Eunji Song](https://github.com/eunjisong)
+* [Sarah Wooten](https://github.com/snwooten)
 
