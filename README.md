@@ -7,6 +7,9 @@ Build and Go was made using React Native as well as ViroMedia SDK for augmented 
 
 Our backend server was made using Node.js, Express, and Sequelize with PostgreSQL and was deployed to Heroku for remote access. Images for parts are hosted by AWS.
 
+## Screenshots
+![BuildAndGo Screenshot](assets/bngscreenshots.png)
+
 ## Getting Started
 Clone this repo install dependences, and link font to React-Native with the following:
 ```
