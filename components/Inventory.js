@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ImageBackground, Image, TouchableOpacity } from "react-native";
+import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from "react-native";
 import { StackNavigator } from "react-navigation";
 import styles from './styles';
 import { connect } from 'react-redux';
@@ -21,7 +21,7 @@ export class Inventory extends React.Component {
       <ImageBackground source={require('../assets/img/loginbkg.jpg')}
       style={styles.backgroundImage}>
       <Text style={styles.title}>Build and Go!</Text>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
       <View style={styles.inventoryContainer}>
         <Text style={styles.inventoryTitle}>Inventory</Text>
         {inventory && inventory.length ?
@@ -55,7 +55,7 @@ export class Inventory extends React.Component {
         : <Text>...</Text>
         }
       </View>
-      </View>
+      </ScrollView>
       </ImageBackground>
     );
   }
