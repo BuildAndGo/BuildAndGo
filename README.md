@@ -10,6 +10,8 @@ Our backend server was built with Node.js, Express, Sequelize, PostgreSQL, and d
 ## Screenshots
 ![BuildAndGo Screenshot](assets/bngscreenshots.png)
 
+## Installation
+
 ### Android
 You'll need an ARCore compatible device - you can find a list of them here:
 [ARCore Supported Devices](https://developers.google.com/ar/discover/supported-devices)
