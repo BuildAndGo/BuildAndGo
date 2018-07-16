@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, TouchableHighlight, TextInput, Text, Image } from 'react-native';
+import { View, TouchableHighlight, TextInput, Text, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import { createUser, fetchUser } from '../store';
 import styles from './styles';
@@ -52,7 +52,7 @@ export class Auth extends Component {
 render() {
 return (
   // image used from http://
-  <Image source={require('../assets/img/loginbkg.jpg')}
+  <ImageBackground source={require('../assets/img/loginbkg.jpg')}
   style={styles.backgroundImage}>
    <Text style={styles.title}>Build and Go!</Text>
       <View style={styles.container}>
@@ -91,7 +91,7 @@ return (
           <Text style={styles.btnText}>Sign Up</Text>
         </TouchableHighlight>
       </View>
-      </Image>
+      </ImageBackground >
     )
   }
 }
