@@ -3,15 +3,14 @@
 BuildAndGo is an augmented reality mobile game for Android and iOS X. Search the world for parts until you find everything you need to build your very own car. Once your car is complete, race to become the new BuildAndGo champion.
 
 ## Technologies
-Build and Go was made using React Native as well as ViroMedia SDK for augmented reality, React Navigation for app navigation, and Redux to store state.
+BuildAndGo was made using React Native, ViroMedia SDK for AR, React Navigation, and Redux.
 
-Our backend server was made using Node.js, Express, and Sequelize with PostgreSQL and was deployed to Heroku for remote access. Images for parts are hosted by AWS.
+Our backend server was built with Node.js, Express, Sequelize, PostgreSQL, and deployed to Heroku for remote access. Images for parts are hosted by AWS.
 
 ## Screenshots
 ![BuildAndGo Screenshot](assets/bngscreenshots.png)
 
 ### Android
-Requirements:
 You'll need an ARCore compatible device - you can find a list of them here:
 [ARCore Supported Devices](https://developers.google.com/ar/discover/supported-devices)
 
