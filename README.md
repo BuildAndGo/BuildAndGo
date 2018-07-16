@@ -18,7 +18,7 @@ You'll need an ARCore compatible device - you can find a list of them here:
 
 You can download the apk here: [BuildAndGo](https://www.dropbox.com/s/3zuzo7d45yrhcrd/buildandgo-app-release.apk?dl=0)
 
-### iOS X & Android
+### iOS X & Android - Viromedia Testbed App
 BuildAndGo will work on iPhones with iOS 11+, but was built for Android. Because of this, the best visual experience will be on Android devices.
 
 Clone this repo install dependences, and link font to React-Native with the following:
