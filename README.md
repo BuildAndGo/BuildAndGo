@@ -14,6 +14,7 @@ Our backend server was made using Node.js, Express, and Sequelize with PostgreSQ
 Requirements:
 An ARCore compatible device - you can find a list of them here:
 [ARCore Supported Devices](https://developers.google.com/ar/discover/supported-devices)
+
 You can download the apk here: [BuildAndGo](https://www.dropbox.com/s/5pgagv73mw5hjjy/app-ar-release.apk?dl=0)
 
 ### iOS
