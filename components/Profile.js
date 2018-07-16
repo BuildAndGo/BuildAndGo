@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import styles from "./styles";
 import { connect } from "react-redux";
 import { fetchTypes, logout } from "../store";
@@ -33,7 +33,7 @@ class Profile extends React.Component {
   render() {
     let email = this.props.user.email;
     return (
-      <Image
+      <ImageBackground
         source={require("../assets/img/loginbkg.jpg")}
         style={styles.backgroundImage}
       >
@@ -86,7 +86,7 @@ class Profile extends React.Component {
             <Text style={styles.btnText}>Start Racing</Text>
           </TouchableOpacity>
         </View>
-      </Image>
+      </ImageBackground>
     );
   }
 }

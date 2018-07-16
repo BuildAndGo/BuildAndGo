@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, Text, TouchableOpacity } from "react-native";
+import { ImageBackground, View, Text, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ViroARSceneNavigator } from "react-viro";
 import styles from "./styles";
@@ -30,7 +30,7 @@ export default class Winner extends React.Component {
 
   _showLoser() {
     return (
-      <Image
+      <ImageBackground
         source={require("../assets/loser.jpg")}
         style={styles.backgroundImage}
       >
@@ -62,7 +62,7 @@ export default class Winner extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </Image>
+      </ImageBackground>
     );
   }
 
