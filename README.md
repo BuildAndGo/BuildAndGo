@@ -16,7 +16,7 @@ Our backend server was built with Node.js, Express, Sequelize, PostgreSQL, and d
 You'll need an ARCore compatible device - you can find a list of them here:
 [ARCore Supported Devices](https://developers.google.com/ar/discover/supported-devices)
 
-You can download the apk here: [BuildAndGo](https://www.dropbox.com/s/5pgagv73mw5hjjy/app-ar-release.apk?dl=0)
+You can download the apk here: [BuildAndGo](https://www.dropbox.com/s/3zuzo7d45yrhcrd/buildandgo-app-release.apk?dl=0)
 
 ### iOS
 BuildAndGo will work on iPhones with iOS 11+, but was built for Android. Because of this, the best visual experience will be on Android devices.
